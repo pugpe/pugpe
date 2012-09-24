@@ -1,10 +1,18 @@
 # Django settings for pugpe project.
 
+import sys
+from os.path import abspath, dirname, join
+
+PROJECT_ROOT = dirname(abspath(__file__))
+sys.path.insert(0, abspath(join(PROJECT_ROOT, '../apps')))
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Renato Oliveira', 'renato@labcodes.com.br'),
+    ('Fernando Rocha', 'fernandogrd@gmail.com'), 
+    ('Gileno Alves', 'gascf.cin@gmail.com'),
 )
 
 MANAGERS = ADMINS
