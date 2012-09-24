@@ -12,12 +12,12 @@ class Location(models.Model):
 
     description = models.CharField(_(u'Descrição'), max_length=100)
     street = models.CharField(_(u'Rua'), max_length=255)
-    number = models.CharField(_(u'Número'), max_length='15')
-    district = models.CharField(_(u'Bairro'), max_length='255')
-    postal_code = models.CharField(_(u'CEP'), max_length='50')
+    number = models.CharField(_(u'Número'), max_length=15)
+    district = models.CharField(_(u'Bairro'), max_length=255)
+    postal_code = models.CharField(_(u'CEP'), max_length=50)
     city = models.CharField(_(u'Cidade'), max_length=50)
-    state = models.CharField(_(u'Estado'), max_length='50')
-    country = models.CharField(_(u'País'), max_length='50')
+    state = models.CharField(_(u'Estado'), max_length=50)
+    country = models.CharField(_(u'País'), max_length=50)
 
     reference = models.CharField(u'Referência', max_length=100)
 
