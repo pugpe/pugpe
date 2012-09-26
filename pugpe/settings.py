@@ -131,6 +131,7 @@ INSTALLED_APPS = (
 
     'south',
     'events',
+    'core',
 )
 
 # A sample logging configuration. The only tangible logging
