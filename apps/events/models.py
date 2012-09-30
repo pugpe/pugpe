@@ -5,11 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from core.models import TimeStampedModel
 
 
-class Location(models.Model):
-    class Meta:
-        verbose_name = _(u'Local')
-        verbose_name_plural = _(u'Locais')
-
+class Location(TimeStampedModel):
     description = models.CharField(_(u'Descrição'), max_length=100)
 
     street = models.CharField(_(u'Rua'), max_length=255)
@@ -27,6 +23,10 @@ class Location(models.Model):
         help_text=u'Caso preenchido, sobrescreve o mapa gerado '
         u'automaticamente',
     )
+
+    class Meta:
+        verbose_name = _(u'Local')
+        verbose_name_plural = _(u'Locais')
 
     def __unicode__(self):
         return self.description
@@ -50,11 +50,7 @@ class Location(models.Model):
         return base_url.format(qs)
 
 
-class Event(models.Model):
-    class Meta:
-        verbose_name = _(u'Evento')
-        verbose_name_plural = _(u'Eventos')
-
+class Event(TimeStampedModel):
     description = models.CharField(_(u'Descrição'), max_length=100)
     full_description = models.TextField(_(u'Descrição Completa'))
     date = models.DateTimeField(_(u'Data'))
@@ -62,6 +58,10 @@ class Event(models.Model):
     location = models.ForeignKey(
         'Location', verbose_name=_(u'Local'),
     )
+
+    class Meta:
+        verbose_name = _(u'Evento')
+        verbose_name_plural = _(u'Eventos')
 
     def __unicode__(self):
         return self.description
@@ -112,9 +112,6 @@ class Talk(TimeStampedModel):
     type = models.CharField(_(u'Tipo'), max_length=20, choices=TYPES)
     level = models.CharField(_(u'Nível'), max_length=20, choices=LEVELS)
     summary = models.TextField(_(u'Resumo'))
-    event = models.ForeignKey(
-        'Event', verbose_name=_(u'Evento'),
-    )
 
     class Meta:
         verbose_name = _(u'Palestra')
@@ -131,3 +128,20 @@ class Talk(TimeStampedModel):
 
     def get_macro_theme(self):
         return dict(self.THEMES)[self.macro_theme]
+
+
+class EventTalk(TimeStampedModel):
+    '''
+    Meta dados de palestra no evento, afim de facilitar cadastro das palestras
+    no evento
+    '''
+    active = models.BooleanField(_(u'Ativo'))
+
+    event = models.ForeignKey('events.Event', verbose_name=_(u'Evento'))
+    talk = models.ForeignKey('events.Talk', verbose_name=_(u'Palestra'))
+
+    start = models.TimeField(_(u'Início'))
+    end = models.TimeField(_(u'Fim'))
+
+    def __unicode__(self):
+        return u'{0} - {1}'.format(self.event, self.talk)
