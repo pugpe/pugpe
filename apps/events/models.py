@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from core.models import TimeStampedModel
+from .managers import ActiveManager
 
 
 class Event(TimeStampedModel):
@@ -29,13 +30,16 @@ class EventTalk(TimeStampedModel):
     Meta dados de palestra no evento, afim de facilitar cadastro das palestras
     no evento
     '''
-    active = models.BooleanField(_(u'Ativo'))
+    status = models.BooleanField(_(u'Ativo'))
 
     event = models.ForeignKey('events.Event', verbose_name=_(u'Evento'))
     talk = models.ForeignKey('submission.Talk', verbose_name=_(u'Palestra'))
 
     start = models.TimeField(_(u'Início'))
     end = models.TimeField(_(u'Fim'))
+
+    objects = models.Manager()
+    active = ActiveManager()
 
     def __unicode__(self):
         return u'{0} - {1}'.format(self.event, self.talk)

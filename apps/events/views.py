@@ -10,7 +10,7 @@ class TalkListView(ListView):
     context_object_name = 'talks'
 
     def get_queryset(self):
-        return EventTalk.objects.filter(event__slug=self.kwargs['event_slug'])
+        return EventTalk.active.filter(event__slug=self.kwargs['event_slug'])
 
     def get_context_data(self, **kwargs):
         event = Event.objects.get(slug=self.kwargs['event_slug'])
