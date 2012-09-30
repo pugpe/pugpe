@@ -11,7 +11,7 @@ TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     ('Renato Oliveira', 'renato@labcodes.com.br'),
-    ('Fernando Rocha', 'fernandogrd@gmail.com'), 
+    ('Fernando Rocha', 'fernandogrd@gmail.com'),
     ('Gileno Alves', 'gascf.cin@gmail.com'),
 )
 
@@ -127,7 +127,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
 
     'south',
     'events',
