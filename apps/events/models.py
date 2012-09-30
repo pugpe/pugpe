@@ -112,7 +112,7 @@ class Talk(TimeStampedModel):
     type = models.CharField(_(u'Tipo'), max_length=20, choices=TYPES)
     level = models.CharField(_(u'Nível'), max_length=20, choices=LEVELS)
     summary = models.TextField(_(u'Resumo'))
-    location = models.ForeignKey(
+    event = models.ForeignKey(
         'Event', verbose_name=_(u'Evento'),
     )
 
