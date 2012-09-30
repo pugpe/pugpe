@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
-
-from .models import Location, Event, Talk, EventTalk
+from .models import Event, EventTalk
 
 
 class EventTalkInline(admin.StackedInline):
@@ -12,6 +11,5 @@ class EventTalkInline(admin.StackedInline):
 class EventAdmin(admin.ModelAdmin):
     inlines = (EventTalkInline,)
 
-admin.site.register(Location)
+
 admin.site.register(Event, EventAdmin)
-admin.site.register(Talk)
