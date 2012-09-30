@@ -12,7 +12,7 @@ var
 sdist
 develop-eggs
 .installed.cfg
-*.db
+*.sw*
 
 # Installer logs
 pip-log.txt
