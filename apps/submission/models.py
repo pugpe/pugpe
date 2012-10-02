@@ -63,4 +63,3 @@ class Talk(TimeStampedModel):
 
     def get_macro_theme(self):
         return dict(self.THEMES)[self.macro_theme]
-
