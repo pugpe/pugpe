@@ -3,6 +3,8 @@
 import sys
 from os.path import abspath, dirname, join
 
+import dj_database_url
+
 PROJECT_ROOT = dirname(abspath(__file__))
 sys.path.insert(0, abspath(join(PROJECT_ROOT, '../apps')))
 
@@ -18,14 +20,9 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'pugpe.db',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-    }
+    'default': dj_database_url.config(
+        default='sqlite:///{0}'.format(join(PROJECT_ROOT, 'pugpe.db')),
+    )
 }
 
 # Local time zone for this installation. Choices can be found here:
