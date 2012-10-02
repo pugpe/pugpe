@@ -129,10 +129,10 @@ INSTALLED_APPS = (
 
     'south',
 
+    'geo',
     'submission',
     'events',
     'core',
-    'geo',
 )
 
 # A sample logging configuration. The only tangible logging
