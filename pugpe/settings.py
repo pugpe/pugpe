@@ -130,6 +130,7 @@ INSTALLED_APPS = (
     'south',
 
     'geo',
+    'emails',
     'submission',
     'events',
     'core',

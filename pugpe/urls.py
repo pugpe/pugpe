@@ -7,7 +7,11 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', direct_to_template, {'template': 'index.html'}, name='index',),
+    url(r'^$', direct_to_template, {'template': 'index.html'}, name='index'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^', include('events.urls')),
+    url(r'^emails/', include('emails.urls', namespace='emails')),
+    url(r'^', include('events.urls', namespace='events')),
+    url(r'^(?P<event_slug>[\w_-]+)/submissao/',
+        include('submission.urls', namespace='submission')
+    ),
 )

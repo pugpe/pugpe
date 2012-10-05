@@ -22,7 +22,7 @@ class Event(TimeStampedModel):
         return self.description
 
     def get_absolute_url(self):
-        return reverse('event', kwargs={'slug': self.slug})
+        return reverse('events:event', kwargs={'event_slug': self.slug})
 
 
 class EventTalk(TimeStampedModel):
@@ -35,8 +35,8 @@ class EventTalk(TimeStampedModel):
     event = models.ForeignKey('events.Event', verbose_name=_(u'Evento'))
     talk = models.ForeignKey('submission.Talk', verbose_name=_(u'Palestra'))
 
-    start = models.TimeField(_(u'Início'))
-    end = models.TimeField(_(u'Fim'))
+    start = models.TimeField(_(u'Início'), null=True, blank=True)
+    end = models.TimeField(_(u'Fim'), null=True, blank=True)
 
     objects = models.Manager()
     active = ActiveManager()
