@@ -15,5 +15,10 @@ setup: deps
 run:
 	@python manage.py runserver 0.0.0.0:8000
 
+heroku:
+	@git push heroku master
+	@heroku run python manage.py syncdb --noinput
+	@heroku run python manage.py migrate
+
 help:
 	grep '^[^#[:space:]].*:' Makefile | awk -F ":" '{print $$1}'
