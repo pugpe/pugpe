@@ -7,13 +7,14 @@ from django.utils.decorators import method_decorator
 from django.shortcuts import redirect
 
 from events.models import Event
+from events.views import EventMixin
 
 from .models import Talk
 from .forms import TalkForm, VoteForm
 from .utils import token_required
 
 
-class SubmissionView(CreateView):
+class SubmissionView(EventMixin, CreateView):
     form_class = TalkForm
     template_name = 'submission/submission.html'
     model = Talk
@@ -28,7 +29,7 @@ class SubmissionView(CreateView):
         return kwargs
 
 
-class SubmissionListView(ListView):
+class SubmissionListView(EventMixin, ListView):
     model = Talk
     template_name = 'submission/vote.html'
     context_object_name = 'talks'

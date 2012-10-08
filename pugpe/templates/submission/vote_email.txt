@@ -1,8 +1,8 @@
-Caros, desde Fevereiro de 2010 temos nos encontrado com frequência para discutir, aprender e compartilhar conhecimentos sobre python, e é com muito orgulho que anunciamos o nosso XX encontro do Python User Group - Pernambuco.
+Caros, desde Fevereiro de 2010 temos nos encontrado com frequência para discutir, aprender e compartilhar conhecimentos sobre python, e é com muito orgulho que anunciamos o nosso {{ event }}.
 
-Para esta edição viemos pedir a sua opinião para saber quais palestras serão apresentadas no evento por meio do link http://{{ site }}{% url submission:vote %}?token={{ token }}.
+Para esta edição viemos pedir a sua opinião para saber quais palestras serão apresentadas no evento por meio do link http://{{ site }}{% url submission:vote event.slug %}?token={{ token }}.
 
-O evento será realizado no auditório do departamento de computação da Escola Politécnica de Pernambuco, sábado, dia 15 de setembro, 8hrs as 17hrs.
+O evento será realizado na {{ event.location }}, {{ event.date }}.
 
 Att.
 Organização PyconPE

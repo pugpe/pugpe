@@ -7,20 +7,26 @@ from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.sites.models import Site
 from django.conf import settings
+from django.utils import translation
+
 
 from emails.models import Email
+from events.models import Event
 
 
 class Command(BaseCommand):
     help = u'Send email for voting on submissions'
 
     def get_email(self, email):
+        translation.activate(settings.LANGUAGE_CODE)
+
         subject = _(u'Votação das palestras submetidas para a PyconPE')
         from_email = settings.DEFAULT_FROM_EMAIL
 
         ctx = {
             'site': Site.objects.get_current().domain,
             'token': signing.dumps(email.pk),
+            'event': Event.objects.order_by('-id')[0],
         }
 
         text_content = render_to_string('submission/vote_email.txt', ctx)
