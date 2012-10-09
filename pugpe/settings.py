@@ -87,7 +87,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'b&amp;rtk5!7lcgdo)ye9gsxcnn!br9a#bwaguh*t-^sf3*g3!@wys'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'dev_secret_key')
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
