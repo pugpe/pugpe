@@ -10,6 +10,7 @@ from .managers import ActiveManager
 class Partner(models.Model):
     description = models.CharField(_(u'Descrição'), max_length=100)
     url = models.URLField(_('URL'))
+    logo = models.ImageField(upload_to='uploads/partners')
 
     class Meta:
         verbose_name = _(u'Parceiro')
@@ -25,7 +26,6 @@ class Sponsor(Partner):
         ('silver', _('Prata')),
         ('bronze', _('bronze')),
     )
-    logo = models.ImageField(upload_to='uploads/sponsors')
     type = models.CharField(_('Tipo'), max_length=20, choices=TYPES)
 
     class Meta:
@@ -34,7 +34,6 @@ class Sponsor(Partner):
 
 
 class Support(Partner):
-    logo = models.ImageField(upload_to='uploads/support')
 
     class Meta:
         verbose_name = _(u'Apoio')
@@ -49,7 +48,7 @@ class Event(TimeStampedModel):
     location = models.ForeignKey('geo.Location', verbose_name=_(u'Local'))
     partners = models.ManyToManyField(
         'events.Partner',
-        verbose_name=_(u'Parceiros')
+        verbose_name=_(u'Parceiros'),
     )
     submission_deadline = models.DateTimeField(
         _(u'Data limite para submissão'),

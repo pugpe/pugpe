@@ -129,6 +129,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
 
     'south',
+    'easy_thumbnails',
 
     'geo',
     'emails',

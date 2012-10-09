@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls import patterns, include, url
 from django.views.generic.simple import direct_to_template
+from django.conf.urls.static import static
+from django.conf import settings
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -14,4 +16,4 @@ urlpatterns = patterns('',
     url(r'^(?P<event_slug>[\w_-]+)/submissao/',
         include('submission.urls', namespace='submission')
     ),
-)
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
