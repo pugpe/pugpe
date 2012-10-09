@@ -29,3 +29,5 @@ pip-log.txt
 
 #Database
 *.db
+
+local_settings.py
