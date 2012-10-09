@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 from django.utils.decorators import method_decorator
+from django.utils import timezone
 from django.shortcuts import redirect
 
 from events.models import Event
@@ -27,6 +28,16 @@ class SubmissionView(EventMixin, CreateView):
         kwargs['event'] = Event.objects.get(slug=self.kwargs['event_slug'])
 
         return kwargs
+
+    def dispatch(self, *args, **kwargs):
+        # necessário para o método get_context_data ser executado
+        response = super(SubmissionView, self).dispatch(*args, **kwargs)
+
+        event = self.get_context_data()['event']
+        if event.submission_deadline < timezone.now():
+            return redirect(reverse('submission:end', kwargs=self.kwargs))
+
+        return response
 
 
 class SubmissionListView(EventMixin, ListView):

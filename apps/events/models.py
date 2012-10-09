@@ -13,6 +13,9 @@ class Event(TimeStampedModel):
     date = models.DateTimeField(_(u'Data'))
     slug = models.SlugField()
     location = models.ForeignKey('geo.Location', verbose_name=_(u'Local'))
+    submission_deadline = models.DateTimeField(
+        _(u'Data limite para submissão'),
+    )
 
     class Meta:
         verbose_name = _(u'Evento')
