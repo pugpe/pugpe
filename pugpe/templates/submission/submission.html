@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<p>Este formulário visa a convidar a todos a submeterem palestras para o nosso {{ event }}.  O evento será realizado {{ event.date }} na {{ event.location }}.  Qualquer um pode submeter quantas quiser.<br>
+    As palestras relâmpagos terão duração no máximo de 10 minutos.<br>
+    Submetam!<br>
+    Atenciosamente,<br>
+    Equipe PUG-PE</p>
+    <h3>Ficha de Inscrição</h3>
+    <form method="POST" action="." class="sign-in">
+        {% csrf_token %} 
+        {{ form }}
+        <input class="btn-send" type="submit" value="Enviar">
+    </form>
+{% endblock %}

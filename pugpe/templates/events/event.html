@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+    <div align="center" id="logo">
+        <img src="{{ STATIC_URL }}img/logo.png" class="img-rounded center">
+    </div>
+    <div align="center" id="como-chegar">
+        <a target="_blank" href="{{ event.location.map_link }}" style="color:#0000FF;text-align:left"><img src="{{ event.location.static_map }}" alt="{{ event.location.description }} - " /><br /><small>Exibir mapa ampliado</small></a>
+    </div>
+    <div align="center">
+        <h5>Local: {{ event.location.description }} </h5>
+        <h5>{{ event.location.address }}</h5>
+        <h5>Horário: {{ event.date }} </h5> 
+        <h5>Entrada: Gratuita</h5>
+    </div>
+    <div id="grade">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Horário</th>
+                    <th>Conteúdo</th>
+                    <th>Palestrantes</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for talk in talks %}
+                <tr>
+                    <td>{{ talk.start }} - {{ talk.end }}</td>
+                    <td>{{ talk.talk.title }}</td>
+                    <td>{{ talk.talk.name }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="row show-grid underhero">
+        <div class="span3">
+            <h2 style="margin-top:10px;">Parceiros</h2>
+        </div>
+        <div class="span3">
+            <a target="_blank" href="">
+                <img src="{{ STATIC_URL }}" alt="" width="150" />
+            </a>
+        </div>
+
+    </div><!--END grid-->
+    <div class="row show-grid underhero">
+        <div class="span3">&nbsp;</div>
+
+        <div class="span3">
+            <a target="_blank" href="">
+                <img style="margin-top:10px;" src="{{ STATIC_URL }}" alt="" width="150" />
+            </a>
+        </div>
+
+    </div>
+{% endblock %}

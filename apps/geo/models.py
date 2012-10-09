@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.utils.http import urlencode, urlquote
 
 from core.models import TimeStampedModel
 
@@ -33,13 +34,14 @@ class Location(TimeStampedModel):
 
     @property
     def address(self):
-        address = (self.street, self.number, self.district)
-        return u'{0} nº{1} {2}'.format(*address)
+        address = (
+            self.street, self.number, self.district, self.city, self.state,
+        )
+        return u'{0} nº{1} - {2}, {3} - {4}'.format(*address)
 
-    def get_map(self):
-        if self.map:
-            return self.map
-
+    @property
+    def map_link(self):
+        '''Google map search link'''
         base_url = 'http://maps.google.com.br/maps?q={0}'
 
         qs = u'{0},{1},{2},{3},{4}'
@@ -49,4 +51,29 @@ class Location(TimeStampedModel):
 
         return base_url.format(qs)
 
+    def _map_query_string(self):
+        '''QueryString for static map'''
+        qs = u'{0}'.format(self.street)
+        qs += u',{0}'.format(self.number)
+        qs += u',{0}'.format(self.district)
+        qs += u',{0}'.format(self.city)
+        qs += u',{0}'.format(self.state)
+
+        return qs
+
+    @property
+    def static_map(self, size='600x300'):
+        '''Google static map'''
+        if self.map:
+            return self.map
+
+        base_url = u'http://maps.google.com/maps/api/staticmap'
+        params = {u'format': u'JPEG', u'maptype': u'maptype', 'size': size,
+                  u'language': u'pt-BR', u'sensor': u'false'}
+
+        qs = u'color:red|{0}'.format(self._map_query_string())
+        qs = u'&markers=' + urlquote(qs)
+        params['zoom'] = '15'
+
+        return u'{0}?{1}{2}'.format(base_url, urlencode(params), qs)
 

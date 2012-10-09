@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from core.models import TimeStampedModel
+from .managers import ActiveManager
 
 
 class Partner(models.Model):
@@ -50,6 +51,9 @@ class Event(TimeStampedModel):
         'events.Partner',
         verbose_name=_(u'Parceiros')
     )
+    submission_deadline = models.DateTimeField(
+        _(u'Data limite para submissão'),
+    )
 
     class Meta:
         verbose_name = _(u'Evento')
@@ -59,7 +63,7 @@ class Event(TimeStampedModel):
         return self.description
 
     def get_absolute_url(self):
-        return reverse('event', kwargs={'slug': self.slug})
+        return reverse('events:event', kwargs={'event_slug': self.slug})
 
 
 class EventTalk(TimeStampedModel):
@@ -67,13 +71,16 @@ class EventTalk(TimeStampedModel):
     Meta dados de palestra no evento, afim de facilitar cadastro das palestras
     no evento
     '''
-    active = models.BooleanField(_(u'Ativo'))
+    status = models.BooleanField(_(u'Ativo'))
 
     event = models.ForeignKey('events.Event', verbose_name=_(u'Evento'))
     talk = models.ForeignKey('submission.Talk', verbose_name=_(u'Palestra'))
 
-    start = models.TimeField(_(u'Início'))
-    end = models.TimeField(_(u'Fim'))
+    start = models.TimeField(_(u'Início'), null=True, blank=True)
+    end = models.TimeField(_(u'Fim'), null=True, blank=True)
+
+    objects = models.Manager()
+    active = ActiveManager()
 
     def __unicode__(self):
         return u'{0} - {1}'.format(self.event, self.talk)
