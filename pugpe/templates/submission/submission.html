@@ -2,7 +2,8 @@
 
 
 {% block content %}
-<p>Este formulário visa a convidar a todos a submeterem palestras para o nosso {{ event }}.  O evento será realizado {{ event.date }} na {{ event.location }}.  Qualquer um pode submeter quantas quiser.<br>
+    <h2>Submeta sua proposta para a {{ event }}!</h2>
+    <p>Este formulário visa a convidar a todos a submeterem palestras para o nosso {{ event }}.  O evento será realizado {{ event.date }} na {{ event.location }}.  Qualquer um pode submeter quantas quiser.<br>
     As palestras relâmpagos terão duração no máximo de 10 minutos.<br>
     Submetam!<br>
     Atenciosamente,<br>
@@ -10,7 +11,7 @@
     <h3>Ficha de Inscrição</h3>
     <form method="POST" action="." class="sign-in">
         {% csrf_token %} 
-        {{ form }}
+        {{ form.as_p }}
         <input class="btn-send" type="submit" value="Enviar">
     </form>
 {% endblock %}

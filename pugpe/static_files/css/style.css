@@ -1,0 +1,342 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+body {
+    font-family: 'Droid Sans', sans-serif;
+    font-size: 13px;
+    color: #525151;
+}
+
+h1, h2, h3, h4, h5, h6 { 
+    font-weight: bold; 
+    text-rendering: optimizeLegibility; 
+    line-height: 1.1; 
+    margin-bottom: 14px; 
+    margin-top: 14px; 
+}
+
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small { 
+    font-size: 60%; 
+    color: #6f6f6f; 
+    line-height: 0; 
+}
+
+h1 {
+    font-size: 32px;
+}
+
+h2 {
+    font-size: 27px;
+}
+
+h3 {
+    font-size: 23px;
+}
+
+h4 {
+    font-size: 18px;
+}
+
+hr { 
+    border: solid #ddd; 
+    border-width: 1px 0 0; 
+    clear: both; 
+    margin: 22px 0 21px; 
+    height: 0; 
+}
+
+em, i { 
+    font-style: italic; 
+    line-height: inherit; 
+}
+
+strong, b { 
+    font-weight: bold; 
+    line-height: inherit; 
+}
+
+small { 
+    font-size: 60%; 
+    line-height: inherit; 
+}
+
+code { 
+    font-weight: bold; 
+    background: #ffff99; 
+}
+
+ul, ol {  
+    line-height: 1.6; 
+    margin-bottom: 17px; 
+    list-style-position: outside; 
+}
+
+ul li ul { 
+    margin-left: 20px; 
+    margin-bottom: 0; 
+    list-style: outside; 
+}
+
+p {
+    line-height: 150%;
+}
+
+/* Buttons ------------------------ */
+.button {  width: auto; cursor: pointer; display: inline-block; line-height: 1; margin: 0; outline: none; padding: 10px 20px 11px; position: relative; text-align: center; text-decoration: none; background:#d74937;-webkit-box-shadow: inset 0px -3px 1px rgba(0, 0, 0, 0.45), 0px 2px 2px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: inset 0px -3px 1px rgba(0, 0, 0, 0.45), 0px 2px 2px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0px -3px 1px rgba(0, 0, 0, 0.45), 0px 2px 2px rgba(0, 0, 0, 0.25);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border:1px solid #2d2d2d}
+.search{  width: auto; cursor: pointer; display: inline-block; line-height: 1; margin: 0; outline: none; padding: 10px 20px 9px; position: relative; text-align: center; text-decoration: none; background:#d74937;
+    border:0; margin-left:-2px; color:#fff; font-size:13px;}    
+.button.green {  background:#6a9564;-webkit-box-shadow: inset 0px -3px 1px rgba(0, 0, 0, 0.45), 0px 2px 2px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: inset 0px -3px 1px rgba(0, 0, 0, 0.45), 0px 2px 2px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0px -3px 1px rgba(0, 0, 0, 0.45), 0px 2px 2px rgba(0, 0, 0, 0.25);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5); border:1px solid #2d2d2d}
+.button.gray {  background:#818181;-webkit-box-shadow: inset 0px -3px 1px rgba(0, 0, 0, 0.45), 0px 2px 2px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: inset 0px -3px 1px rgba(0, 0, 0, 0.45), 0px 2px 2px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0px -3px 1px rgba(0, 0, 0, 0.45), 0px 2px 2px rgba(0, 0, 0, 0.25);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border:1px solid #2d2d2d}
+.button.red {  background:#c00;-webkit-box-shadow: inset 0px -3px 1px rgba(0, 0, 0, 0.45), 0px 2px 2px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: inset 0px -3px 1px rgba(0, 0, 0, 0.45), 0px 2px 2px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0px -3px 1px rgba(0, 0, 0, 0.45), 0px 2px 2px rgba(0, 0, 0, 0.25);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border:1px solid #2d2d2d}           
+.button:hover { background: #2d2d2d; color:#fff }
+.button.noborder { background: #da4a38; border: none; color: #fff; text-shadow: none; margin:0; border:0;}
+.button.noborder:hover { background: #2d2d2d; color:#fff }
+
+.wrapper {
+    margin: 0 auto;
+    width: 980px;
+}
+
+.quickbar {
+    padding: 5px 0;
+    border-bottom: 1px solid #E3E5E6;
+    margin: 0;
+    background: #2D2D2D;
+    height: 35px;
+    line-height: 35px;
+    text-align: right;
+}
+
+.quickbar a {
+    display: inline-block;
+    font-size: 14px;
+    color: #BBB;
+    text-transform: uppercase;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.quickbar a:hover {
+    text-decoration: underline;
+}
+
+.quickbar a.login {
+    background: url(../img/login.png) no-repeat center left;
+    padding-left: 20px;
+}
+
+.quickbar a.settings {
+    background: url(../img/support.png) no-repeat center left;
+    padding-left: 20px;
+}
+
+header.top {
+    padding: 5px 0;
+    margin: 0 0 30px 0;
+    background: #EEE;
+    width: 100%;
+}
+
+header.top h1 a {
+    display: block;
+    width: 158px;
+    height: 111px;
+    text-indent: -999em;
+    overflow: hidden;
+    float: left;
+    background: url(../img/img-logo.png) no-repeat 0 0;
+    margin-bottom: 10px;
+}
+
+header.top nav {
+    float: right;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+nav ul {
+    margin: 0;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    box-shadow: 0 0 14px 0px #e5e1e1;
+    height: 45px;
+    border: 1px solid #E5E1E1;
+}
+
+nav ul li {
+    float: left;
+    position: relative;
+}
+
+nav ul li a {
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    padding: 12px 28px;
+    color: #2D2D2D;
+}
+
+nav ul li a.active, nav ul li a:hover {
+    color: #D94A38;
+}
+
+.title {
+    border-bottom: 1px solid #E9E9E9;
+    padding: 6px 0;
+}
+
+.box {
+    padding: 4px 6px;
+}
+
+.clearfix {
+    clear: both;
+    height: 0px;
+}
+
+.content, .info {
+    float: left;
+    position: relative;
+    display: block;
+}
+
+.content {
+    width: 65%;
+    margin-right: 5%;
+}
+
+.info {
+    width: 30%;
+}
+
+.panel {
+    background: #F2F2F2;
+    border: solid 1px #E6E6E6;
+    margin: 0 0 22px 0;
+    padding: 15px 20px;
+    overflow: hidden;
+}
+
+.panel h1, .panel h2, .panel h3, .panel h4 {
+    margin-top: 0px;
+}
+
+.panel img {
+    display: block;
+    margin-bottom: 15px;
+}
+
+.red {
+    color: #D94A38;
+}
+
+img {
+    border: 1px solid #ccc;
+    padding: 2px;
+    background-color: #fff;
+}
+
+img.left {
+    float: left;
+    margin: 0 10px 10px 0;
+}
+
+footer.bottom {
+    padding: 15px 0 30px 0;
+    border-top: 1px solid #E3E5E6;
+    margin-top: 10px;
+    width: 100%;
+    background: #2D2D2D;
+    text-align: center;
+    color: #BBB;
+}
+
+/* tables */
+table { background: #fff; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; margin: 0 0 18px; border: 1px solid #ddd; width:100%; }
+
+table thead, table tfoot { background: #f5f5f5; }
+
+table thead tr th, table tfoot tr th, table tbody tr td, table tr td, table tfoot tr td {  line-height: 18px; text-align: left; }
+
+table thead tr th, table tfoot tr td { padding: 8px 10px 9px;  font-weight: bold; color: #222; }
+
+table thead tr th:first-child, table tfoot tr td:first-child { border-left: none; }
+
+table thead tr th:last-child, table tfoot tr td:last-child { border-right: none; }
+
+table tbody tr.even, table tbody tr.alt { background: #f9f9f9; }
+
+table tbody tr:nth-child(even) { background: #f9f9f9; }
+
+table tbody tr td { color: #333; padding: 9px 10px; vertical-align: top; border: none; }

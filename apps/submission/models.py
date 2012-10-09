@@ -1,4 +1,6 @@
 # -*- coding:utf-8 -*-
+import hashlib
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -68,6 +70,14 @@ class Talk(TimeStampedModel):
 
     def __unicode__(self):
         return u'{0} | {1}'.format(self.name, self.title)
+
+    def _gravatar_url(self, size=110):
+        hash = hashlib.md5(self.email).hexdigest()
+        return 'http://gravatar.com/avatar/{0}?s={1}'.format(hash, size)
+
+    @property
+    def gravatar(self):
+        return self._gravatar_url(97)
 
     def get_type(self):
         return dict(self.TYPES)[self.type]

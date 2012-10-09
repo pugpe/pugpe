@@ -1,31 +1,90 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>{% block title %}{% endblock %} | PUG-PE</title>
-        <link href="{{ STATIC_URL }}css/bootstrap/css/bootstrap.css" rel="stylesheet" >
-        {% block extrastyle %}{% endblock %}
-        <link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico">
-        <link rel="icon" href="{{ STATIC_URL }}img/favicon.ico">
-        <link rel="apple-touch-icon" href=" ">
-        <script type="text/javascript">
-
-         var _gaq = _gaq || [];
-         _gaq.push(['_setAccount', 'UA-34635796-1']);
-         _gaq.push(['_trackPageview']);
-
-         (function() {
-           var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-           ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-           var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-         })();
-
-        </script>
-        {% block extrahead %}{% endblock %}
-
-    </head>
-    <body>
-        {% block content %}
-        {% endblock%}
-    </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <title>{% block title %}{% endblock %} | PUG-PE</title>
+  <link href="http://fonts.googleapis.com/css?family=Signika:400,300,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" />
+  {% block extrastyle %}{% endblock %}
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link rel="icon" href="{{ STATIC_URL }}img/favicon.ico">
+  <link rel="apple-touch-icon" href=" ">
+  <script type="text/javascript">
+  
+   var _gaq = _gaq || [];
+   _gaq.push(['_setAccount', 'UA-34635796-1']);
+   _gaq.push(['_trackPageview']);
+  
+   (function() {
+     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+   })();
+  
+  </script>
+{% block extrahead %}{% endblock %}
+</head>
+<body>
+  <div class="quickbar">
+    <div class="wrapper">
+      <a target="_blank" href="https://twitter.com/PUGPE" class="">twitter</a>
+      <a target="_blank" href="http://www.facebook.com/pug.pe" class="">facebook</a>
+      <a target="_blank" href="http://pugpe.wordpress.com/" class="">blog</a>
+      <a target="_blank" href="http://www.flickr.com/search/?q=pug-pe&s=rec" class="">Flickr</a>
+      <a target="_blank" href="https://groups.google.com/group/pug-pe?hl=pt&pli=1" class="">Lista de Discussão</a>
+    </div>
+  </div>
+  <header class="top">
+    <div class="wrapper">
+      <h1><a href="#">XX Encontro do PUG-PE</a></h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="#home" class="active">INÍCIO</a>
+          </li>
+          <li>
+            <a href="#local">LOCAL</a>
+          </li>
+          <li>
+            <a href="#talks">PALESTRAS</a>
+          </li>
+          <li>
+            <a href="#agenda">PROGRAMAÇÃO</a>
+          </li>
+          {% comment %}
+          <li>
+            <a href="#">EDIÇÕES ANTERIORES</a>
+          </li>
+          {% endcomment %}
+        </ul>
+      </nav>
+      <div class="clearfix"></div>
+    </div>
+  </header>
+  <div class="wrapper main">
+    <section class="content">
+    {% block content %}
+    {% endblock %}
+    </section>
+    <aside class="info">
+      <div class="panel">
+        <h3 class="red">Patrocinadores</h3>
+        <a href="#"><img src="images/nasa.png" /></a>
+        <a href="#"><img src="images/nasa.png" /></a>
+      </div>
+    </aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer class="bottom">
+    <div class="wrapper">
+        <p>{% now "Y" %} - PUG-PE</p>
+    </div>
+  </footer>
+</body>
 </html>
+

@@ -1,56 +1,40 @@
 {% extends "base.html" %}
 {% block content %}
-    <div align="center" id="logo">
-        <img src="{{ STATIC_URL }}img/logo.png" class="img-rounded center">
-    </div>
-    <div align="center" id="como-chegar">
-        <a target="_blank" href="{{ event.location.map_link }}" style="color:#0000FF;text-align:left"><img src="{{ event.location.static_map }}" alt="{{ event.location.description }} - " /><br /><small>Exibir mapa ampliado</small></a>
-    </div>
-    <div align="center">
-        <h5>Local: {{ event.location.description }} </h5>
-        <h5>{{ event.location.address }}</h5>
-        <h5>Horário: {{ event.date }} </h5> 
-        <h5>Entrada: Gratuita</h5>
-    </div>
-    <div id="grade">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Horário</th>
-                    <th>Conteúdo</th>
-                    <th>Palestrantes</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for talk in talks %}
-                <tr>
-                    <td>{{ talk.start }} - {{ talk.end }}</td>
-                    <td>{{ talk.talk.title }}</td>
-                    <td>{{ talk.talk.name }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
+      <h2 class="title" id="home">{{ event.description }} ({{ event.date|date:"d/m" }})</h2>
+      <p>{{ event.full_description }}</p>
+
+      <h2 class="title" id="local">Como Chegar?</h2>
+      <p><a target="_blank" href="{{ event.location.map_link }}" style="color:#0000FF;text-align:left"><img src="{{ event.location.static_map }}" alt="{{ event.location.description }} - " /><br /><small>Exibir mapa ampliado</small></a></p>
+      <h5>Local: {{ event.location.description }} </h5>
+      <h5>{{ event.location.address }}</h5>
+      <h5>Horário: {{ event.date }} </h5> 
+      <h5>Entrada: Gratuita</h5>
+
+      <h2 class="title" id="talks">PALESTRAS</h2>
+      {% for talk in talks %}
+      <div class="panel">
+        <h4 class="red">{{ talk.talk.title }}</h4>
+        <img src="{{ talk.talk.gravatar }}" class="left" />
+        <p>{{ talk.talk.summary }}</p>
+      </div>
+      {% endfor %}
+      <h2 class="title" id="agenda">Programação</h2>
+      <table>
+          <thead>
+            <tr>
+              <th>Horário</th>
+              <th>O que?</th>
+              <th>Quem?</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for talk in talks %}
+            <tr>
+                <td>{{ talk.start }} - {{ talk.end }}</td>
+                <td>{{ talk.talk.title }}</td>
+                <td>{{ talk.talk.name }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
         </table>
-    </div>
-    <div class="row show-grid underhero">
-        <div class="span3">
-            <h2 style="margin-top:10px;">Parceiros</h2>
-        </div>
-        <div class="span3">
-            <a target="_blank" href="">
-                <img src="{{ STATIC_URL }}" alt="" width="150" />
-            </a>
-        </div>
-
-    </div><!--END grid-->
-    <div class="row show-grid underhero">
-        <div class="span3">&nbsp;</div>
-
-        <div class="span3">
-            <a target="_blank" href="">
-                <img style="margin-top:10px;" src="{{ STATIC_URL }}" alt="" width="150" />
-            </a>
-        </div>
-
-    </div>
 {% endblock %}
