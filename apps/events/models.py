@@ -6,12 +6,50 @@ from django.utils.translation import ugettext_lazy as _
 from core.models import TimeStampedModel
 
 
+class Partner(models.Model):
+    description = models.CharField(_(u'Descrição'), max_length=100)
+    url = models.URLField(_('URL'))
+
+    class Meta:
+        verbose_name = _(u'Parceiro')
+        verbose_name_plural = _(u'Parceiros')
+
+    def __unicode__(self):
+        return self.description
+
+
+class Sponsor(Partner):
+    TYPES = (
+        ('gold', _('Ouro')),
+        ('silver', _('Prata')),
+        ('bronze', _('bronze')),
+    )
+    logo = models.ImageField(upload_to='uploads/sponsors')
+    type = models.CharField(_('Tipo'), max_length=20, choices=TYPES)
+
+    class Meta:
+        verbose_name = _(u'Patrocinador')
+        verbose_name_plural = _(u'Patrocinadores')
+
+
+class Support(Partner):
+    logo = models.ImageField(upload_to='uploads/support')
+
+    class Meta:
+        verbose_name = _(u'Apoio')
+        verbose_name_plural = _(u'Apoio')
+
+
 class Event(TimeStampedModel):
     description = models.CharField(_(u'Descrição'), max_length=100)
     full_description = models.TextField(_(u'Descrição Completa'))
     date = models.DateTimeField(_(u'Data'))
     slug = models.SlugField()
     location = models.ForeignKey('geo.Location', verbose_name=_(u'Local'))
+    partners = models.ManyToManyField(
+        'events.Partner',
+        verbose_name=_(u'Parceiros')
+    )
 
     class Meta:
         verbose_name = _(u'Evento')
