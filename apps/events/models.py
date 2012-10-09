@@ -47,8 +47,8 @@ class Event(TimeStampedModel):
     slug = models.SlugField()
     location = models.ForeignKey('geo.Location', verbose_name=_(u'Local'))
     partners = models.ManyToManyField(
-        'events.Partner',
-        verbose_name=_(u'Parceiros'),
+        'events.Partner', verbose_name=_(u'Parceiros'),
+        null=True, blank=True,
     )
     submission_deadline = models.DateTimeField(
         _(u'Data limite para submissão'),
