@@ -9,7 +9,7 @@ import dj_database_url
 PROJECT_ROOT = dirname(abspath(__file__))
 sys.path.insert(0, abspath(join(PROJECT_ROOT, '../apps')))
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
