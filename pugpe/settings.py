@@ -1,6 +1,7 @@
 # Django settings for pugpe project.
 
 import sys
+from os import environ
 from os.path import abspath, dirname, join
 
 import dj_database_url
@@ -87,7 +88,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'dev_secret_key')
+SECRET_KEY = environ.get('DJANGO_SECRET_KEY', 'dev_secret_key')
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
