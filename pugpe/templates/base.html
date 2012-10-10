@@ -73,10 +73,14 @@
     </section>
     <aside class="info">
       <div class="panel">
-        <h3 class="red">Patrocinadores</h3>
-        {% for partner in event.partners.all %}
-            <a href="#"><img src="{% thumbnail partner.logo 211x153  %}" /></a>
-        {% endfor %}
+        {% if event.partner.exists %}
+            <h3 class="red">Patrocinadores</h3>
+            {% for partner in event.partners.all %}
+                <a href="#"><img src="{% thumbnail partner.logo 250x153  %}" /></a>
+            {% endfor %}
+        {% endif %}
+        <h3 class="red">Realização:</h3>
+        <a target="_blank" href="http://pug.pe/"><img src="{{ STATIC_URL }}img/logo_pug.jpg" /></a>
       </div>
     </aside>
     <div class="clearfix"></div>
