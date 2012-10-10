@@ -2,7 +2,7 @@
 {% block title %}{{ event }}{% endblock %}
 {% block content %}
       <h2 class="title" id="home">{{ event.description }} ({{ event.date|date:"d/m" }})</h2>
-      <p>{{ event.full_description }}</p>
+      <p>{{ event.full_description|safe }}</p>
 
       <h2 class="title" id="local">Como Chegar?</h2>
       <p><a target="_blank" href="{{ event.location.map_link }}" style="color:#0000FF;text-align:left"><img src="{{ event.location.static_map }}" alt="{{ event.location.description }} - " /><br /><small>Exibir mapa ampliado</small></a></p>
