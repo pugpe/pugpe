@@ -45,16 +45,16 @@
       <nav>
         <ul>
           <li>
-            <a href="#home" class="active">INÍCIO</a>
+            <a href="{% if event %}{% url events:event event.slug %}{% else %}{% url index %}{% endif %}#home" class="active">INÍCIO</a>
           </li>
           <li>
-            <a href="#local">LOCAL</a>
+            <a href="{% if event %}{% url events:event event.slug %}{% else %}{% url index %}{% endif %}#local">LOCAL</a>
           </li>
           <li>
-            <a href="#talks">PALESTRAS</a>
+            <a href="{% if event %}{% url events:event event.slug %}{% else %}{% url index %}{% endif %}#talks">PALESTRAS</a>
           </li>
           <li>
-            <a href="#agenda">PROGRAMAÇÃO</a>
+            <a href="{% if event %}{% url events:event event.slug %}{% else %}{% url index %}{% endif %}#agenda">PROGRAMAÇÃO</a>
           </li>
           {% comment %}
           <li>

@@ -12,6 +12,9 @@ sys.path.insert(0, abspath(join(PROJECT_ROOT, '../apps')))
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
+DEFAULT_FROM_EMAIL = u'PyconPE <organizacao@pug.pe>'
+SERVER_EMAIL = DEFAULT_FROM_EMAIL
+
 ADMINS = (
     ('Renato Oliveira', 'renato@labcodes.com.br'),
     ('Fernando Rocha', 'fernandogrd@gmail.com'),
