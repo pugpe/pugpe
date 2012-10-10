@@ -52,24 +52,20 @@ USE_L10N = True
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
 
-# Absolute filesystem path to the directory that will hold user-uploaded files.
-# Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = join(PROJECT_ROOT, 'media')
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+AWS_ACCESS_KEY_ID = environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = environ.get('S3_BUCKET_NAME')
 
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash.
-# Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = '/media/'
+STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
-# Absolute path to the directory static files should be collected to.
-# Don't put anything in this directory yourself; store your static files
-# in apps' "static/" subdirectories and in STATICFILES_DIRS.
-# Example: "/home/media/media.lawrence.com/static/"
 STATIC_ROOT = join(PROJECT_ROOT, 'static')
+STATIC_URL = 'https://%s.s3.amazonaws.com/static/' % AWS_STORAGE_BUCKET_NAME
+ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
-# URL prefix for static files.
-# Example: "http://media.lawrence.com/static/"
-STATIC_URL = '/static/'
+MEDIA_ROOT = join(PROJECT_ROOT, 'media')
+MEDIA_URL = 'https://%s.s3.amazonaws.com/media/' % AWS_STORAGE_BUCKET_NAME
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -119,6 +115,7 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -130,6 +127,7 @@ INSTALLED_APPS = (
 
     'south',
     'easy_thumbnails',
+    'storages',
 
     'geo',
     'emails',
