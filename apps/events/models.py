@@ -53,13 +53,29 @@ class Event(TimeStampedModel):
     submission_deadline = models.DateTimeField(
         _(u'Data limite para submissão'),
     )
+    index = models.BooleanField(
+        help_text=u'Indica que a raiz do site irá redirecionar para esse '
+        u'evento. ex: Ao entrar em pycon.pug.pe/ redireciona para pycon.'
+        u'pug.pe/slug_definido',
+    )
 
     class Meta:
         verbose_name = _(u'Evento')
         verbose_name_plural = _(u'Eventos')
 
+    def __init__(self, *args, **kwargs):
+        super(Event, self).__init__(*args, **kwargs)
+        self._original_index = self.index
+
     def __unicode__(self):
         return self.description
+
+    def save(self, *args, **kwargs):
+        # Caso marcado index, desmarcar outros.
+        Event.objects.update(index=False)
+
+        super(Event, self).save(*args, **kwargs)
+        self._original_index = self.index
 
     def get_absolute_url(self):
         return reverse('events:event', kwargs={'event_slug': self.slug})
