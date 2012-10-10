@@ -57,8 +57,8 @@ AWS_ACCESS_KEY_ID = environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = environ.get('S3_BUCKET_NAME')
 
-STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+DEFAULT_FILE_STORAGE = 'pugpe.s3utils.MediaRootS3BotoStorage'
+STATICFILES_STORAGE = 'pugpe.s3utils.StaticRootS3BotoStorage'
 
 STATIC_ROOT = join(PROJECT_ROOT, 'static')
 STATIC_URL = 'https://%s.s3.amazonaws.com/static/' % AWS_STORAGE_BUCKET_NAME
