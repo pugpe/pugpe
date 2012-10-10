@@ -70,6 +70,11 @@ ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 MEDIA_ROOT = join(PROJECT_ROOT, 'media')
 MEDIA_URL = 'https://%s.s3.amazonaws.com/media/' % AWS_STORAGE_BUCKET_NAME
 
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'email-smtp.us-east-1.amazonaws.com'
+EMAIL_HOST_USER = environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = environ.get('EMAIL_HOST_PASSWORD')
+
 # Additional locations of static files
 STATICFILES_DIRS = (
     join(PROJECT_ROOT, 'static_files'),
