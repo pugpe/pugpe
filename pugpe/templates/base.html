@@ -73,13 +73,19 @@
     </section>
     <aside class="info">
       <div class="panel">
-        {% if event.partner.exists %}
+        {% if sponsors.exists %}
             <h3 class="red">Patrocinadores</h3>
-            {% for partner in event.partners.all %}
-                <a href="#"><img src="{% thumbnail partner.logo 250x153  %}" /></a>
+            {% for sponsor in sponsors %}
+                <a href="{{ sponsor.url }}"><img src="{% thumbnail sponsor.logo 250x153  %}" /></a>
             {% endfor %}
         {% endif %}
-        <h3 class="red">Realização:</h3>
+        {% if sponsors.exists %}
+            <h3 class="red">Apoio</h3>
+            {% for support in supporters %}
+                <a href="{{ support.url }}"><img src="{% thumbnail sponsor.logo 250x153  %}" /></a>
+            {% endfor %}
+        {% endif %}
+        <h3 class="red">Realização</h3>
         <a target="_blank" href="http://pug.pe/"><img src="{{ STATIC_URL }}img/logo_pug.jpg" /></a>
       </div>
     </aside>
