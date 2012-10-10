@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     url(r'^$', direct_to_template, {'template': 'index.html'}, name='index'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^emails/', include('emails.urls', namespace='emails')),
+    url(r'^xx/$', direct_to_template, {'template': 'events/xx.html'}),
     url(r'^', include('events.urls', namespace='events')),
     url(r'^(?P<event_slug>[\w_-]+)/submissao/',
         include('submission.urls', namespace='submission')
