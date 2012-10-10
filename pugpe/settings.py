@@ -128,6 +128,7 @@ INSTALLED_APPS = (
     'south',
     'easy_thumbnails',
     'storages',
+    'bootstrapform',
 
     'geo',
     'emails',

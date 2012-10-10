@@ -7,3 +7,4 @@ PIL==1.1.7
 easy-thumbnails==1.1
 boto==2.6.0
 django-storages==1.1.5
+django-bootstrap-form==2.0.5
