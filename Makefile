@@ -19,6 +19,7 @@ heroku:
 	@git push heroku master
 	@heroku run python manage.py syncdb --noinput
 	@heroku run python manage.py migrate
+	@heroku run python manage.py collectstatic
 
 help:
 	grep '^[^#[:space:]].*:' Makefile | awk -F ":" '{print $$1}'
