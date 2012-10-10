@@ -11,33 +11,33 @@
       <h5>Horário: {{ event.date }} </h5> 
       <h5>Entrada: Gratuita</h5>
 
-      {% if talks.exists %}
-          <h2 class="title" id="talks">PALESTRAS</h2>
-          {% for talk in talks %}
-          <div class="panel">
-            <h4 class="red">{{ talk.talk.title }}</h4>
-            <img src="{{ talk.talk.gravatar }}" class="left" />
-            <p>{{ talk.talk.summary }}</p>
-          </div>
-          {% endfor %}
-          <h2 class="title" id="agenda">Programação</h2>
-          <table>
-              <thead>
-                <tr>
-                  <th>Horário</th>
-                  <th>O que?</th>
-                  <th>Quem?</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for talk in talks %}
-                <tr>
-                    <td>{{ talk.start }} - {{ talk.end }}</td>
-                    <td>{{ talk.talk.title }}</td>
-                    <td>{{ talk.talk.name }}</td>
-                </tr>
-                {% endfor %}
-              </tbody>
-          </table>
-      {% endif %}
+      <h2 class="title" id="talks">PALESTRAS</h2>
+      {% for talk in talks %}
+      <div class="panel">
+        <h4 class="red">{{ talk.talk.title }}</h4>
+        <img src="{{ talk.talk.gravatar }}" class="left" />
+        <p>{{ talk.talk.summary }}</p>
+      </div>
+      {% empty %}
+          <p>Divulgaremos as palestras em breve!</p>
+      {% endfor %}
+      <h2 class="title" id="agenda">Programação</h2>
+      <table>
+          <thead>
+            <tr>
+              <th>Horário</th>
+              <th>O que?</th>
+              <th>Quem?</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for talk in talks %}
+            <tr>
+                <td>{{ talk.start }} - {{ talk.end }}</td>
+                <td>{{ talk.talk.title }}</td>
+                <td>{{ talk.talk.name }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+      </table>
 {% endblock %}
