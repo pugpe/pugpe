@@ -1,7 +1,9 @@
 # Django settings for pugpe project.
 
 import sys
-from os import environ
+import os
+import warnings
+
 from os.path import abspath, dirname, join
 
 import dj_database_url
@@ -9,7 +11,7 @@ import dj_database_url
 PROJECT_ROOT = dirname(abspath(__file__))
 sys.path.insert(0, abspath(join(PROJECT_ROOT, '../apps')))
 
-DEBUG = False
+DEBUG = bool(int(os.environ.get('DJANGO_DEBUG', 1)))
 TEMPLATE_DEBUG = DEBUG
 
 DEFAULT_FROM_EMAIL = u'PyconPE <organizacao@pug.pe>'
@@ -55,25 +57,33 @@ USE_L10N = True
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-AWS_ACCESS_KEY_ID = environ.get('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = environ.get('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = environ.get('S3_BUCKET_NAME')
-
-DEFAULT_FILE_STORAGE = 'pugpe.s3utils.MediaRootS3BotoStorage'
-STATICFILES_STORAGE = 'pugpe.s3utils.StaticRootS3BotoStorage'
-
-STATIC_ROOT = join(PROJECT_ROOT, 'static')
-STATIC_URL = 'https://%s.s3.amazonaws.com/static/' % AWS_STORAGE_BUCKET_NAME
-ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
 MEDIA_ROOT = join(PROJECT_ROOT, 'media')
-MEDIA_URL = 'https://%s.s3.amazonaws.com/media/' % AWS_STORAGE_BUCKET_NAME
+STATIC_ROOT = join(PROJECT_ROOT, 'static')
+
+if not DEBUG and not AWS_ACCESS_KEY_ID:
+    warnings.warn(
+        'Atencao! S3 NAO esta em uso, adicione variaveis de ambiente '
+        'referentes para habilitar',
+    )
+
+if AWS_ACCESS_KEY_ID:
+    DEFAULT_FILE_STORAGE = 'pugpe.s3utils.MediaRootS3BotoStorage'
+    STATICFILES_STORAGE = 'pugpe.s3utils.StaticRootS3BotoStorage'
+
+    MEDIA_URL = 'https://%s.s3.amazonaws.com/media/' % AWS_STORAGE_BUCKET_NAME
+    STATIC_URL = 'https://%s.s3.amazonaws.com/static/' % AWS_STORAGE_BUCKET_NAME
+else:
+    MEDIA_URL = '/media/'
+    STATIC_URL = '/static/'
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'email-smtp.us-east-1.amazonaws.com'
-EMAIL_HOST_USER = environ.get('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -92,7 +102,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = environ.get('DJANGO_SECRET_KEY', 'dev_secret_key')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'dev_secret_key')
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
