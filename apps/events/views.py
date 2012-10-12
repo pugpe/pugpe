@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.views.generic import ListView
+from django.shortcuts import get_object_or_404
 
 from .models import Event, EventTalk
 from .models import Support, Sponsor
@@ -8,7 +9,7 @@ from .models import Support, Sponsor
 class EventMixin(object):
     '''Add event to context of views that require an event'''
     def get_context_data(self, **kwargs):
-        event = Event.objects.get(slug=self.kwargs['event_slug'])
+        event = get_object_or_404(Event, slug=self.kwargs['event_slug'])
         sponsors = Support.objects.filter(event=event)
         supporters = Support.objects.filter(event=event)
 
