@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 from django.views.generic import CreateView, ListView
+from django.views.generic.base import TemplateView
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
@@ -13,6 +14,15 @@ from events.views import EventMixin
 from .models import Talk
 from .forms import TalkForm, VoteForm
 from .utils import token_required
+
+
+class SubmissionSuccess(EventMixin, TemplateView):
+    template_name = "submission/success_submission.html"
+
+    def get_context_data(self, **kwargs):
+        kwargs = super(SubmissionSuccess, self).get_context_data()
+        kwargs['event'] = Event.objects.get(slug=self.kwargs['event_slug'])
+        return kwargs
 
 
 class SubmissionView(EventMixin, CreateView):

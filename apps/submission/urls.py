@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic.simple import direct_to_template
 
-from .views import SubmissionView, SubmissionListView
+from .views import SubmissionView, SubmissionListView, SubmissionSuccess
 
 
 urlpatterns = patterns('',
@@ -10,7 +10,7 @@ urlpatterns = patterns('',
         name='submission',
     ),
     url(r'^success/$',
-        direct_to_template, {'template': 'submission/success_submission.html'},
+        SubmissionSuccess.as_view(),
         name='success_submission',
     ),
     url(r'^end/$',
