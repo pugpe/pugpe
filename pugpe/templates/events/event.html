@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% block title %}{{ event }}{% endblock %}
 {% block content %}
+      <!-- Social Buttons start -->
+      <div class="fb-like" data-href="http://pycon.pug.pe/{{ event.slug }}/" style="float: left; padding-right: 12px;" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+      <script src="http://platform.twitter.com/widgets.js"></script>
+      <a href="http://twitter.com/share" class="twitter-share-button" data-text="{{ event.description }} http://pycon.pug.pe/{{ event.slug }}/" data-count="horizontal" data-lang="pt">Tweetar</a>
+      <!-- Social Buttons end -->
       <h2 class="title" id="home">{{ event.description }} ({{ event.date|date:"d/m" }})</h2>
       <p>{{ event.full_description|safe }}</p>
 

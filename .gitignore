@@ -15,6 +15,7 @@ develop-eggs
 *.sw*
 media/*
 static/*
+venv
 
 # Installer logs
 pip-log.txt
@@ -33,3 +34,5 @@ pip-log.txt
 *.db
 
 local_settings.py
+
+.DS_Store
