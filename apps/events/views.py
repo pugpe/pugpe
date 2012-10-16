@@ -10,7 +10,7 @@ class EventMixin(object):
     '''Add event to context of views that require an event'''
     def get_context_data(self, **kwargs):
         event = get_object_or_404(Event, slug=self.kwargs['event_slug'])
-        sponsors = Support.objects.filter(event=event)
+        sponsors = Sponsor.objects.filter(event=event)
         supporters = Support.objects.filter(event=event)
 
         kwargs.update(
