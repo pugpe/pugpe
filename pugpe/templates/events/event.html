@@ -20,7 +20,10 @@
       {% for talk in talks %}
       <div class="panel">
         <h4 class="red">{{ talk.talk.title }}</h4>
-        <img src="{{ talk.talk.gravatar }}" class="left" />
+        <div class="left">
+            <img src="{{ talk.talk.gravatar }}" class="left" />
+            <h6>{{ talk.talk.name }}</h6>
+        </div>
         <p>{{ talk.talk.summary }}</p>
       </div>
       {% empty %}

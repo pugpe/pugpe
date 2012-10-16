@@ -312,6 +312,10 @@ img.left {
     margin: 0 10px 10px 0;
 }
 
+div.left {
+    float: left;
+}
+
 footer.bottom {
     padding: 15px 0 30px 0;
     border-top: 1px solid #E3E5E6;
