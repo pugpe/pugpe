@@ -73,6 +73,7 @@ if not DEBUG and not AWS_ACCESS_KEY_ID:
 if AWS_ACCESS_KEY_ID:
     DEFAULT_FILE_STORAGE = 'pugpe.s3utils.MediaRootS3BotoStorage'
     STATICFILES_STORAGE = 'pugpe.s3utils.StaticRootS3BotoStorage'
+    THUMBNAIL_DEFAULT_STORAGE = DEFAULT_FILE_STORAGE
 
     MEDIA_URL = 'https://%s.s3.amazonaws.com/media/' % AWS_STORAGE_BUCKET_NAME
     STATIC_URL = 'https://%s.s3.amazonaws.com/static/' % AWS_STORAGE_BUCKET_NAME
