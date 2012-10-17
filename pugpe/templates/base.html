@@ -87,13 +87,13 @@
         {% if sponsors.exists %}
             <h3 class="red">Patrocinadores</h3>
             {% for sponsor in sponsors %}
-                <a href="{{ sponsor.url }}"><img src="{% thumbnail sponsor.logo 250x153  %}" /></a>
+                <a target="_blank" href="{{ sponsor.url }}"><img src="{% thumbnail sponsor.logo 250x153  %}" /></a>
             {% endfor %}
         {% endif %}
         {% if supporters.exists %}
             <h3 class="red">Apoio</h3>
             {% for support in supporters %}
-                <a href="{{ support.url }}"><img src="{% thumbnail support.logo 250x153  %}" /></a>
+                <a target="_blank" href="{{ support.url }}"><img src="{% thumbnail support.logo 250x153  %}" /></a>
             {% endfor %}
         {% endif %}
         <h3 class="red">Realização</h3>
