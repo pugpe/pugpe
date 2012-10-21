@@ -16,6 +16,7 @@ class EventMixin(object):
         kwargs.update(
             {'event': event, 'sponsors': sponsors, 'supporters': supporters},
         )
+
         return super(EventMixin, self).get_context_data(**kwargs)
 
 

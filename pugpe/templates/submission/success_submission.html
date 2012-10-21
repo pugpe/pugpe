@@ -4,4 +4,28 @@
 
 {% block content %}
     <p>{% trans "Proposta enviada com sucesso!" %}</p>
+    <h4>Aproveite para divulgar o evento!</h4>
+    <!-- Social Buttons start -->
+    <div id="fb-root"></div>
+      <script src="http://connect.facebook.net/en_US/all.js">
+      </script>
+      <script>
+        FB.init({ 
+          appId:'', 
+          cookie:true, 
+          status:true, 
+          xfbml:true 
+        });
+        function post_on_wall(){
+          FB.ui({ 
+            method: 'feed', 
+            link: 'http://pycon.pug.pe/{{ event.slug }}/',
+            name: '{{ event.description }}',
+            description: 'Acabei de enviar uma proposta de palestra para o {{ event.description }}'});
+        }
+      </script>
+    <button type="button"onclick="post_on_wall();">compartilhar</button>
+    <script src="http://platform.twitter.com/widgets.js"></script>
+    <a href="http://twitter.com/share" class="twitter-share-button" data-text="Acabei de enviar uma proposta de palestra para o {{ event.description }} http://pycon.pug.pe/{{ event.slug }}/" data-count="horizontal" data-lang="pt">Tweetar</a>
+    <!-- Social Buttons end -->
 {% endblock %}
