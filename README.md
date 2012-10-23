@@ -17,10 +17,10 @@ Instalação
 
 Contribuidores
 --------------
-Renato Oliveira
-Fernando Rocha
-Gileno Filho
-Filipe Ximenes
+- Renato Oliveira
+- Fernando Rocha
+- Gileno Filho
+- Filipe Ximenes
 
 License
 -------
