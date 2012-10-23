@@ -15,6 +15,13 @@ Instalação
 
 - make setup
 
+Contribuidores
+--------------
+Renato Oliveira
+Fernando Rocha
+Gileno Filho
+Filipe Ximenes
+
 License
 -------
 
