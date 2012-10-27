@@ -1,3 +1,4 @@
+import ipdb
 # -*- coding:utf-8 -*-
 import boto
 
@@ -40,8 +41,7 @@ class Signature(TimeStampedModel):
             # If the bucket already exists, this finds that, rather than
             # creating.
             bucket = conn.create_bucket(settings.AWS_STORAGE_BUCKET_NAME)
-            k = boto.s3.key.Key(bucket)
-            k.key = settings.MEDIA_ROOT + self.signature
+            k = bucket.get_key('media/' + self.signature.name)
             k.set_acl('private')
 
 
