@@ -66,6 +66,11 @@
           <li>
             <a href="{% if event %}{% url events:event event.slug %}{% else %}{% url index %}{% endif %}#agenda">PROGRAMAÇÃO</a>
           </li>
+          {% if allow_submission %}
+          <li>
+            <a href="{% if event %}{% url submission:submission event.slug %}{% else %}{% url index %}{% endif %}">SUBMISSÃO DE PALESTRA</a>
+          </li>
+          {% endif %}
           {% comment %}
           <li>
             <a href="#">EDIÇÕES ANTERIORES</a>
