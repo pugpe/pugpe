@@ -1,4 +1,4 @@
-# Django settings for pugpe project.
+# -*- coding:utf-8 -*-
 
 import sys
 import os
@@ -81,6 +81,15 @@ else:
     MEDIA_URL = '/media/'
     STATIC_URL = '/static/'
 
+# Necessário para o uso de DatabaseStorage
+DB_FILES = {
+    'db_table': 'FILES',
+    'fname_column':  'FILE_NAME',
+    'blob_column': 'BLOB',
+    'size_column': 'SIZE',
+    'base_url': 'http://localhost/dbfiles/'
+}
+
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'email-smtp.us-east-1.amazonaws.com'
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
@@ -152,6 +161,7 @@ INSTALLED_APPS = (
     'geo',
     'emails',
     'submission',
+    'cert',
     'events',
     'core',
 )
