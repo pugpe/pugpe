@@ -10,7 +10,7 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         # Adding field 'Event.signature'
         db.add_column('events_event', 'signature',
-                      self.gf('django.db.models.fields.related.ForeignKey')(default=1, to=orm['cert.Signature']),
+                      self.gf('django.db.models.fields.related.ForeignKey')(to=orm['cert.Signature'], null=True),
                       keep_default=False)
 
     def backwards(self, orm):
@@ -36,7 +36,7 @@ class Migration(SchemaMigration):
             'location': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['geo.Location']"}),
             'partners': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': "orm['events.Partner']", 'null': 'True', 'blank': 'True'}),
             'pub_date': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
-            'signature': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['cert.Signature']"}),
+            'signature': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['cert.Signature']", 'null': 'True'}),
             'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50'}),
             'submission_deadline': ('django.db.models.fields.DateTimeField', [], {})
         },
