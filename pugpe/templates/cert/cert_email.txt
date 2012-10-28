@@ -1,0 +1,9 @@
+{% extends "base_email.txt" %}
+{% load i18n %}
+
+{% block content %}
+{% trans 'Caro' %} {{ attendee.name }},
+{% trans 'Agradecemos sua participação no' %} {{ event }}!
+{% trans 'Para obter seu certificado, siga o link:' %} {{ site }}{% url cert:cert attendee.slug %}
+{% trans 'Contamos com sua presença no próximo encontro!' %}
+{% endblock %}

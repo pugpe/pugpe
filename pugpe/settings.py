@@ -14,7 +14,7 @@ sys.path.insert(0, abspath(join(PROJECT_ROOT, '../apps')))
 DEBUG = bool(int(os.environ.get('DJANGO_DEBUG', 1)))
 TEMPLATE_DEBUG = DEBUG
 
-DEFAULT_FROM_EMAIL = u'PyconPE <organizacao@pug.pe>'
+DEFAULT_FROM_EMAIL = u'Pug-PE <organizacao@pug.pe>'
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
 
 ADMINS = (
@@ -62,8 +62,7 @@ AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
 FACEBOOK_APP_ID = '220369961426964'
-# TODO: ainda nao foi colocada no heroku
-# FACEBOOK_APP_SECRET = os.environ.get('FACEBOOK_APP_SECRET')
+FACEBOOK_APP_SECRET = os.environ.get('FACEBOOK_APP_SECRET')
 
 MEDIA_ROOT = join(PROJECT_ROOT, 'media')
 STATIC_ROOT = join(PROJECT_ROOT, 'static')

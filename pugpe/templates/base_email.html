@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+    </head>
+
+    <body>
+        {% block content %}{% endblock %}
+        <p>--<br/>Att.<br/>Organização PUG-PE (<a target="_blank" href="http://pug.pe">http://pug.pe</a>)</p>
+        <p>
+            <small>Confira as novidades do PUG-PE através da nossa <a target="_blank" href="https://groups.google.com/group/pug-pe?hl=pt&pli=1" class="">Lista de Discussão</a> ou através dos nossas perfis em <a target="_blank" href="http://www.facebook.com/pug.pe" class="">facebook</a> | <a target="_blank" href="https://twitter.com/PUGPE" class="">twitter</a> | <a target="_blank" href="http://pugpe.wordpress.com/" class="">blog</a> | <a target="_blank" href="http://www.flickr.com/search/?q=pug-pe&s=rec" class="">Flickr</a> </small>
+        </p>
+          
+      {% if token %}
+      {# Optout não faz tanta lógica em todo tipo de e-mail, ex: certificado #}
+      <p><small>Caso não deseja receber e-mails do PUG-PE, clique em <a href="http://{{ site }}{% url emails:optout %}?token={{ token }}">Cancelar</a></small></p>
+      {% endif %}
+    </body>
+</html>
