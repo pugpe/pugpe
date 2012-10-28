@@ -14,7 +14,7 @@ sys.path.insert(0, abspath(join(PROJECT_ROOT, '../apps')))
 DEBUG = bool(int(os.environ.get('DJANGO_DEBUG', 1)))
 TEMPLATE_DEBUG = DEBUG
 
-DEFAULT_FROM_EMAIL = u'PyconPE <organizacao@pug.pe>'
+DEFAULT_FROM_EMAIL = u'Pug-PE <organizacao@pug.pe>'
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
 
 ADMINS = (
