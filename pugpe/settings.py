@@ -61,6 +61,10 @@ AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
+FACEBOOK_APP_ID = '220369961426964'
+# TODO: ainda nao foi colocada no heroku
+# FACEBOOK_APP_SECRET = os.environ.get('FACEBOOK_APP_SECRET')
+
 MEDIA_ROOT = join(PROJECT_ROOT, 'media')
 STATIC_ROOT = join(PROJECT_ROOT, 'static')
 
@@ -119,6 +123,17 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages",
+    "pugpe.fbutils.app_id",
 )
 
 MIDDLEWARE_CLASSES = (

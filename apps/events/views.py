@@ -2,6 +2,9 @@
 from django.views.generic import ListView
 from django.shortcuts import get_object_or_404
 
+import datetime
+from django.utils.timezone import utc
+
 from .models import Event, EventTalk
 from .models import Support, Sponsor
 
@@ -13,8 +16,15 @@ class EventMixin(object):
         sponsors = Sponsor.objects.filter(event=event)
         supporters = Support.objects.filter(event=event)
 
+        now = datetime.datetime.utcnow().replace(tzinfo=utc)
+
+        allow_submission = False
+        if event.submission_deadline > now:
+            allow_submission = True
+
         kwargs.update(
-            {'event': event, 'sponsors': sponsors, 'supporters': supporters},
+            {'event': event, 'sponsors': sponsors, 'supporters': supporters,
+            'allow_submission': allow_submission, },
         )
 
         return super(EventMixin, self).get_context_data(**kwargs)
