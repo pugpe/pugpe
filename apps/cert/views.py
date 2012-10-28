@@ -8,20 +8,16 @@ from .models import Attendee
 from .generate_cert import generate
 
 
-def certificate(request, event_slug, slug):
+def certificate(request, slug):
     '''
-    Acesado publicamente via link único, afim de adicionar link em
-    certificado
+    Acesado publicamente via link único, afim tornar possível link de
+    verificação em certificado
     '''
-    event = get_object_or_404(Event, slug=event_slug)
     attendee = get_object_or_404(Attendee, slug=slug)
 
-    if attendee.events.filter(pk=event.pk).exists():
-        pdf = generate(attendee.name, event)
+    pdf = generate(attendee.name, attendee.event)
 
-        response = HttpResponse(mimetype='application/pdf')
-        response['Content-Disposition'] = 'attachment; filename="certificado.pdf"'
-        response.write(pdf.read())
-        return response
-
-    return Http404()
+    response = HttpResponse(mimetype='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="certificado.pdf"'
+    response.write(pdf.read())
+    return response

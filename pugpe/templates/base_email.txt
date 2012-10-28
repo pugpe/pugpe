@@ -1,0 +1,16 @@
+{% block content %}{% endblock %}
+
+Att.
+Organização PUG-PE (http://pug.pe)
+
+Confira as novidades do PUG-PE através da nossa Lista de Discussão[1] ou através dos nossas perfis em redes sociais[2]
+
+[1] https://groups.google.com/group/pug-pe?hl=pt&pli=1
+[2] http://www.facebook.com/pug.pe
+    https://twitter.com/PUGPE
+    http://pugpe.wordpress.com/
+    http://www.flickr.com/search/?q=pug-pe&s=rec
+
+{% if token %}
+Você está recebendo esse e-mail por estar cadastrado na lista de e-mail do pug-pe, caso não deseja receber e-mails, acesse o link http://{{ site }}{% url emails:optout %}?token={{ token }}
+{% endif  %}

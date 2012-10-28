@@ -1,0 +1,9 @@
+{% extends "base_email.html" %}
+{% load i18n %}
+
+{% block content %}
+<p>{% trans 'Caro' %} {{ attendee.name }},</p>
+<p>{% trans 'Agradecemos sua participação no' %} {{ event }}!</>
+<p>{% trans 'Para obter seu certificado, siga o link:' %} <a target="_blank" href="{{ site }}{% url cert:cert attendee.slug %}">{{ site }}{% url cert:cert attendee.slug %}</a></p>
+<p>{% trans 'Contamos com sua presença no próximo encontro!' %}</p>
+{% endblock %}

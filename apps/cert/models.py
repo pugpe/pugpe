@@ -47,7 +47,7 @@ class Signature(TimeStampedModel):
 
 
 class Attendee(TimeStampedModel):
-    events = models.ManyToManyField('events.Event', verbose_name=_(u'Evento'))
+    event = models.ForeignKey('events.Event', verbose_name=_(u'Evento'))
 
     name = models.CharField(_(u'Nome'), max_length=80)
     email = models.EmailField(_(u'E-Mail'), max_length=254)
@@ -59,6 +59,7 @@ class Attendee(TimeStampedModel):
     class  Meta:
         verbose_name = _(u'Participante')
         verbose_name = _(u'Participantes')
+        unique_together = ('email', 'event')
 
     def __unicode__(self):
         return self.name
