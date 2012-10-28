@@ -1,5 +1,4 @@
 # -*- coding:utf-8 -*-
-from django.core import signing
 from django.shortcuts import get_object_or_404, Http404
 from django.http import HttpResponse
 
