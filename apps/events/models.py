@@ -58,6 +58,11 @@ class Event(TimeStampedModel):
         u'evento. ex: Ao entrar em pycon.pug.pe/ redireciona para pycon.'
         u'pug.pe/slug_definido',
     )
+    signature = models.ForeignKey(
+        'cert.Signature', verbose_name=_(u'Assinatura'),
+        help_text=_(u'Assinatura a ser usada nos certificados'),
+        null=True,
+    )
 
     class Meta:
         verbose_name = _(u'Evento')

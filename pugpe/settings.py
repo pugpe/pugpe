@@ -1,4 +1,4 @@
-# Django settings for pugpe project.
+# -*- coding:utf-8 -*-
 
 import sys
 import os
@@ -14,7 +14,7 @@ sys.path.insert(0, abspath(join(PROJECT_ROOT, '../apps')))
 DEBUG = bool(int(os.environ.get('DJANGO_DEBUG', 1)))
 TEMPLATE_DEBUG = DEBUG
 
-DEFAULT_FROM_EMAIL = u'PyconPE <organizacao@pug.pe>'
+DEFAULT_FROM_EMAIL = u'Pug-PE <organizacao@pug.pe>'
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
 
 ADMINS = (
@@ -62,8 +62,7 @@ AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
 FACEBOOK_APP_ID = '220369961426964'
-# TODO: ainda nao foi colocada no heroku
-# FACEBOOK_APP_SECRET = os.environ.get('FACEBOOK_APP_SECRET')
+FACEBOOK_APP_SECRET = os.environ.get('FACEBOOK_APP_SECRET')
 
 MEDIA_ROOT = join(PROJECT_ROOT, 'media')
 STATIC_ROOT = join(PROJECT_ROOT, 'static')
@@ -84,6 +83,15 @@ if AWS_ACCESS_KEY_ID:
 else:
     MEDIA_URL = '/media/'
     STATIC_URL = '/static/'
+
+# Necessário para o uso de DatabaseStorage
+DB_FILES = {
+    'db_table': 'FILES',
+    'fname_column':  'FILE_NAME',
+    'blob_column': 'BLOB',
+    'size_column': 'SIZE',
+    'base_url': 'http://localhost/dbfiles/'
+}
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'email-smtp.us-east-1.amazonaws.com'
@@ -167,6 +175,7 @@ INSTALLED_APPS = (
     'geo',
     'emails',
     'submission',
+    'cert',
     'events',
     'core',
 )
