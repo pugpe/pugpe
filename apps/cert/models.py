@@ -1,4 +1,6 @@
 # -*- coding:utf-8 -*-
+import string
+import random
 import boto
 
 from django.db import models
@@ -50,9 +52,21 @@ class Attendee(TimeStampedModel):
     name = models.CharField(_(u'Nome'), max_length=80)
     email = models.EmailField(_(u'E-Mail'), max_length=254)
 
+    # Campos referentes a certificado
+    slug = models.SlugField(unique=True) # Usado para url de verificação
+    sent_date = models.DateTimeField(null=True, blank=True)
+
     class  Meta:
         verbose_name = _(u'Participante')
         verbose_name = _(u'Participantes')
 
     def __unicode__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = ''.join(
+                random.choice(string.ascii_uppercase + string.digits)
+                for x in range(7),
+            )
+        super(Attendee, self).save(*args, **kwargs)

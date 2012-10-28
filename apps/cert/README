@@ -1,2 +1,9 @@
 Geração de Certificados
------------------------
+=======================
+
+Características
+---------------
+
+- Link único, acessado via url 
+- Assinatura armazenada via banco, para evitar exposição em repositórios abertos
+- Geração em PDF, utilizando o reportlab

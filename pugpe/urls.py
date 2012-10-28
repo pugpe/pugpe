@@ -4,7 +4,6 @@ from django.views.generic.simple import direct_to_template
 from django.conf.urls.static import static
 from django.conf import settings
 
-# Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
@@ -13,11 +12,13 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^emails/', include('emails.urls', namespace='emails')),
-    url(r'^cert/', include('cert.urls', namespace='cert')),
 
     url(r'^xx/$', direct_to_template, {'template': 'events/xx.html'}),
     url(r'^', include('events.urls', namespace='events')),
     url(r'^(?P<event_slug>[\w_-]+)/submissao/',
-        include('submission.urls', namespace='submission')
+        include('submission.urls', namespace='submission'),
+    ),
+    url(r'^(?P<event_slug>[\w_-]+)/cert/',
+        include('cert.urls', namespace='cert'),
     ),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

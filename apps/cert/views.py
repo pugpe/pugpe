@@ -9,17 +9,13 @@ from .models import Attendee
 from .generate_cert import generate
 
 
-def certificate(request, token):
+def certificate(request, event_slug, slug):
     '''
     Acesado publicamente via link único, afim de adicionar link em
     certificado
-
-    token: signing.dumps({'event_pk': n, 'attendee_pk': n})
     '''
-    data = signing.loads(token)
-
-    event = get_object_or_404(Event, pk=data.get('event_pk'))
-    attendee = get_object_or_404(Attendee, pk=data.get('attendee_pk'))
+    event = get_object_or_404(Event, slug=event_slug)
+    attendee = get_object_or_404(Attendee, slug=slug)
 
     if attendee.events.filter(pk=event.pk).exists():
         pdf = generate(attendee.name, event)

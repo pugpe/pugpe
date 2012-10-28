@@ -26,6 +26,12 @@ def get_image(image, width=1*cm):
 
 
 def generate(name, event):
+    '''
+    Retona pdf em memória (StringIO)
+
+    name -- Nome do participante
+    event -- Instância de event
+    '''
     img_path = os.path.join(settings.PROJECT_ROOT, 'static_files/img/cert/')
 
     frame_header = Frame(x1=0, y1=0,  width=700, height=460)
