@@ -8,6 +8,12 @@
       <!-- Social Buttons end -->
       <h2 class="title" id="home">{{ event.description }} ({{ event.date|date:"d/m" }})</h2>
       <p>{{ event.full_description|safe }}</p>
+      {% if not talks.count and allow_submission %}
+      <h5>
+      Tem algo para compartilhar?
+      <a href="{% if event %}{% url submission:submission event.slug %}{% else %}{% url index %}{% endif %}">submeta a sua palestra!</a>
+      </h5>
+      {% endif %}
 
       <h2 class="title" id="local">Como Chegar?</h2>
       <p><a target="_blank" href="{{ event.location.map_link }}" style="color:#0000FF;text-align:left"><img src="{{ event.location.static_map }}" alt="{{ event.location.description }} - " /><br /><small>Exibir mapa ampliado</small></a></p>
@@ -29,12 +35,6 @@
       </div>
       {% empty %}
           <p>Divulgaremos as palestras em breve!</p>
-          {% if allow_submission %}
-          <h5>
-            Tem algo para compartilhar?
-            <a href="{% if event %}{% url submission:submission event.slug %}{% else %}{% url index %}{% endif %}">submeta a sua palestra!</a>
-          </h5>
-          {% endif %}
       {% endfor %}
       <h2 class="title" id="agenda">Programação</h2>
       <table>
