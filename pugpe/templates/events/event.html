@@ -29,6 +29,12 @@
       </div>
       {% empty %}
           <p>Divulgaremos as palestras em breve!</p>
+          {% if allow_submission %}
+          <h5>
+            Tem algo para compartilhar?
+            <a href="{% if event %}{% url submission:submission event.slug %}{% else %}{% url index %}{% endif %}">submeta a sua palestra!</a>
+          </h5>
+          {% endif %}
       {% endfor %}
       <h2 class="title" id="agenda">Programação</h2>
       <table>
