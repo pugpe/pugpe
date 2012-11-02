@@ -4,8 +4,6 @@ from django.views.generic.simple import direct_to_template
 from django.conf.urls.static import static
 from django.conf import settings
 
-from events.views import PastEvents
-
 from django.contrib import admin
 admin.autodiscover()
 
@@ -15,9 +13,9 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^emails/', include('emails.urls', namespace='emails')),
     url(r'^cert/', include('cert.urls', namespace='cert')),
+    url(r'^archive/', include('archive.urls', namespace='archive')),
 
     url(r'^xx/$', direct_to_template, {'template': 'events/xx.html'}),
-    url(r'^past_events/$', PastEvents.as_view(), name='past_events'),
     url(r'^', include('events.urls', namespace='events')),
     url(r'^(?P<event_slug>[\w_-]+)/submissao/',
         include('submission.urls', namespace='submission'),

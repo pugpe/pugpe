@@ -176,6 +176,7 @@ INSTALLED_APPS = (
     'cert',
     'events',
     'core',
+    'archive',
 )
 
 # A sample logging configuration. The only tangible logging

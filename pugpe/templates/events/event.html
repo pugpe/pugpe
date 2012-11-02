@@ -3,52 +3,52 @@
 {% block title %}{{ event }}{% endblock %}
 
 {% block event_content %}
-      <!-- Social Buttons start -->
-      <div class="fb-like" data-href="http://pycon.pug.pe/{{ event.slug }}/" style="float: left; padding-right: 12px;" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
-      <script src="http://platform.twitter.com/widgets.js"></script>
-      <a href="http://twitter.com/share" class="twitter-share-button" data-text="{{ event.description }} http://pycon.pug.pe/{{ event.slug }}/" data-count="horizontal" data-lang="pt">Tweetar</a>
-      <!-- Social Buttons end -->
-      <h2 class="title" id="home">{{ event.description }} ({{ event.date|date:"d/m" }})</h2>
-      <p>{{ event.full_description|safe }}</p>
+  <!-- Social Buttons start -->
+  <div class="fb-like" data-href="http://pycon.pug.pe/{{ event.slug }}/" style="float: left; padding-right: 12px;" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+  <script src="http://platform.twitter.com/widgets.js"></script>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-text="{{ event.description }} http://pycon.pug.pe/{{ event.slug }}/" data-count="horizontal" data-lang="pt">Tweetar</a>
+  <!-- Social Buttons end -->
+  <h2 class="title" id="home">{{ event.description }} ({{ event.date|date:"d/m" }})</h2>
+  <p>{{ event.full_description|safe }}</p>
 
-      <h2 class="title" id="local">Como Chegar?</h2>
-      <p><a target="_blank" href="{{ event.location.map_link }}" style="color:#0000FF;text-align:left"><img src="{{ event.location.static_map }}" alt="{{ event.location.description }} - " /><br /><small>Exibir mapa ampliado</small></a></p>
-      <h5>Local: {{ event.location.description }} </h5>
-      <h5>{{ event.location.address }}</h5>
-      <h5>Horário: {{ event.date }} </h5> 
-      <h5>Entrada: Gratuita</h5>
+  <h2 class="title" id="local">Como Chegar?</h2>
+  <p><a target="_blank" href="{{ event.location.map_link }}" style="color:#0000FF;text-align:left"><img src="{{ event.location.static_map }}" alt="{{ event.location.description }} - " /><br /><small>Exibir mapa ampliado</small></a></p>
+  <h5>Local: {{ event.location.description }} </h5>
+  <h5>{{ event.location.address }}</h5>
+  <h5>Horário: {{ event.date }} </h5> 
+  <h5>Entrada: Gratuita</h5>
 
-      <h2 class="title" id="talks">PALESTRAS</h2>
-      {% for talk in talks %}
-      <div class="panel">
-        <h4 class="red">{{ talk.talk.title }}</h4>
-        <div class="left">
-            <img src="{{ talk.talk.gravatar }}" class="left" />
-            <br />
-            <h6 class="left">{{ talk.talk.name }}</h6>
-        </div>
-        <p>{{ talk.talk.summary }}</p>
-      </div>
-      {% empty %}
-          <p>Divulgaremos as palestras em breve!</p>
-      {% endfor %}
-      <h2 class="title" id="agenda">Programação</h2>
-      <table>
-          <thead>
-            <tr>
-              <th>Horário</th>
-              <th>O que?</th>
-              <th>Quem?</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for talk in talks %}
-            <tr>
-                <td>{{ talk.start }} - {{ talk.end }}</td>
-                <td>{{ talk.talk.title }}</td>
-                <td>{{ talk.talk.name }}</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-      </table>
+  <h2 class="title" id="talks">PALESTRAS</h2>
+  {% for talk in talks %}
+  <div class="panel">
+    <h4 class="red">{{ talk.talk.title }}</h4>
+    <div class="left">
+        <img src="{{ talk.talk.gravatar }}" class="left" />
+        <br />
+        <h6 class="left">{{ talk.talk.name }}</h6>
+    </div>
+    <p>{{ talk.talk.summary }}</p>
+  </div>
+  {% empty %}
+      <p>Divulgaremos as palestras em breve!</p>
+  {% endfor %}
+  <h2 class="title" id="agenda">Programação</h2>
+  <table>
+      <thead>
+        <tr>
+          <th>Horário</th>
+          <th>O que?</th>
+          <th>Quem?</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for talk in talks %}
+        <tr>
+            <td>{{ talk.start }} - {{ talk.end }}</td>
+            <td>{{ talk.talk.title }}</td>
+            <td>{{ talk.talk.name }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+  </table>
 {% endblock %}

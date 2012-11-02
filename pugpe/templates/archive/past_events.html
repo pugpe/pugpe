@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Eventos Passados{% endblock %}
+
+{% block navigator %}
+  <ul>
+    <li>
+      <a href="{% url archive:past_events %}" class="active">EDIÇÕES PASSADAS</a>
+    </li>
+    {% comment %}
+    <li>
+      <a href="">BANCO DE PALESTRAS</a>
+    </li>
+    {% endcomment %}
+  </ul>
+{% endblock %}
+
+{% block content %}
+    <h2 class="title" id="local">Edições Passados</h2>
+    {% for event in events %}
+        <div class="panel">
+        <p>
+            <a href="{% url events:event event.slug %}" target="_blank"><h4>{{ event.description }} - {{ event.date|date:"d/m/y" }}</h4></a>
+        </p>
+        </div>
+    {% endfor %}
+    <div class="panel">
+        <p>
+            <a href="/xx/" target="_blank"><h4>XX Encontro de Usuários de Python de Pernambuco</h4></a>
+        </p>
+    </div>
+{% endblock %}

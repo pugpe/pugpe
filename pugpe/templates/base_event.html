@@ -25,28 +25,27 @@
 {% endblock %}
 
 {% block content %}
-      <section class="content">
-      {% block event_content %}
-      {% endblock %}
-      </section>
-      <aside class="info">
-        <div class="panel">
-          {% if sponsors.exists %}
-              <h3 class="red">Patrocinadores</h3>
-              {% for sponsor in sponsors %}
-                  <a target="_blank" href="{{ sponsor.url }}"><img src="{% thumbnail sponsor.logo 250x153  %}" /></a>
-              {% endfor %}
-          {% endif %}
-          {% if supporters.exists %}
-              <h3 class="red">Apoio</h3>
-              {% for support in supporters %}
-                  <a target="_blank" href="{{ support.url }}"><img src="{% thumbnail support.logo 250x153  %}" /></a>
-              {% endfor %}
-          {% endif %}
-          <h3 class="red">Realização</h3>
-          <a target="_blank" href="http://pug.pe/"><img src="{{ STATIC_URL }}img/logo_pug.jpg" /></a>
-        </div>
-      </aside>
-      <div class="clearfix"></div>
+  <section class="content">
+  {% block event_content %}
+  {% endblock %}
+  </section>
+  <aside class="info">
+    <div class="panel">
+      {% if sponsors.exists %}
+          <h3 class="red">Patrocinadores</h3>
+          {% for sponsor in sponsors %}
+              <a target="_blank" href="{{ sponsor.url }}"><img src="{% thumbnail sponsor.logo 250x153  %}" /></a>
+          {% endfor %}
+      {% endif %}
+      {% if supporters.exists %}
+          <h3 class="red">Apoio</h3>
+          {% for support in supporters %}
+              <a target="_blank" href="{{ support.url }}"><img src="{% thumbnail support.logo 250x153  %}" /></a>
+          {% endfor %}
+      {% endif %}
+      <h3 class="red">Realização</h3>
+      <a target="_blank" href="http://pug.pe/"><img src="{{ STATIC_URL }}img/logo_pug.jpg" /></a>
     </div>
+  </aside>
+  <div class="clearfix"></div>
 {% endblock %}
