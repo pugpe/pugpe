@@ -38,3 +38,9 @@ class TalkListView(EventMixin, ListView):
     def get_queryset(self):
         qs = EventTalk.active.filter(event__slug=self.kwargs['event_slug'])
         return qs.order_by('start')
+
+
+class PastEvents(ListView):
+    template_name = 'events/past_events.html'
+    model = Event
+    context_object_name = 'events'

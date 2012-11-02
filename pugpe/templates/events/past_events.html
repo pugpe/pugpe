@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}Eventos Passados{% endblock %}
+
+{% block content %}
+    
+    {% for event in events %}
+        {{ event.description }}
+    {% endfor %}
+{% endblock %}

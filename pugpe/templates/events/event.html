@@ -1,6 +1,8 @@
-{% extends "base.html" %}
+{% extends "base_event.html" %}
+
 {% block title %}{{ event }}{% endblock %}
-{% block content %}
+
+{% block event_content %}
       <!-- Social Buttons start -->
       <div class="fb-like" data-href="http://pycon.pug.pe/{{ event.slug }}/" style="float: left; padding-right: 12px;" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
       <script src="http://platform.twitter.com/widgets.js"></script>
