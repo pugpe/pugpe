@@ -61,8 +61,6 @@ AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
-FACEBOOK_APP_ID = '220369961426964'
-FACEBOOK_APP_SECRET = os.environ.get('FACEBOOK_APP_SECRET')
 
 MEDIA_ROOT = join(PROJECT_ROOT, 'media')
 STATIC_ROOT = join(PROJECT_ROOT, 'static')
@@ -178,6 +176,7 @@ INSTALLED_APPS = (
     'cert',
     'events',
     'core',
+    'archive',
 )
 
 # A sample logging configuration. The only tangible logging

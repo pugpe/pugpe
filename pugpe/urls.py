@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^emails/', include('emails.urls', namespace='emails')),
     url(r'^cert/', include('cert.urls', namespace='cert')),
+    url(r'^archive/', include('archive.urls', namespace='archive')),
 
     url(r'^xx/$', direct_to_template, {'template': 'events/xx.html'}),
     url(r'^', include('events.urls', namespace='events')),

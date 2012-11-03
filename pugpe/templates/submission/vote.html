@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base_event.html" %}
 {% load i18n %}
 
 {% block title %}{% trans 'Votação das palestras submetidas para o' %} {{ event }}{% endblock %}
@@ -16,7 +16,7 @@
 </style>
 {% endblock %}
 
-{% block content %}
+{% block event_content %}
     <h2>Votação das palestras submetidas para o PyconPE</h2>
     <p> Caros, desde Fevereiro de 2010 temos nos encontrado com frequência para discutir, aprender e compartilhar conhecimentos sobre python, e é com muito orgulho que anunciamos o nosso {{ event }}.</p>
     <p>Para esta edição viemos pedir a sua opinião para saber quais palestras serão apresentadas no evento por meio desta votação.</p>
