@@ -10,7 +10,9 @@
   <meta property="og:image" content="{{ STATIC_URL }}img/img-logo.png" />
   <meta property="og:site_name" content="PUG-PE" />
   <meta property="fb:app_id" content="{{ FACEBOOK_APP_ID }}" />
+  {% if event %}
   <meta property="og:site_name" content="http://pycon.pug.pe{% url events:event event.slug %}" />
+  {% endif %}
 
 
   <title>{% block title %}{% endblock %} | PUG-PE</title>
