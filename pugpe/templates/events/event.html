@@ -20,15 +20,17 @@
 
   <h2 class="title" id="talks">PALESTRAS</h2>
   {% for talk in talks %}
-  <div class="panel">
-    <h4 class="red">{{ talk.talk.title }}</h4>
-    <div class="left">
-        <img src="{{ talk.talk.gravatar }}" class="left" />
-        <br />
-        <h6 class="left">{{ talk.talk.name }}</h6>
-    </div>
-    <p>{{ talk.talk.summary }}</p>
-  </div>
+      {% if talk.talk %}
+          <div class="panel">
+            <h4 class="red">{{ talk.talk.title }}</h4>
+            <div class="left">
+                <img src="{{ talk.talk.gravatar }}" class="left" />
+                <br />
+                <h6 class="left">{{ talk.talk.name }}</h6>
+            </div>
+            <p>{{ talk.talk.summary }}</p>
+          </div>
+      {% endif %}
   {% empty %}
       <p>Divulgaremos as palestras em breve!</p>
   {% endfor %}
