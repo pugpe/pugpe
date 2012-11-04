@@ -45,8 +45,8 @@
         {% for talk in talks %}
         <tr>
             <td>{{ talk.start }} - {{ talk.end }}</td>
-            <td>{{ talk.talk.title }}</td>
-            <td>{{ talk.talk.name }}</td>
+            <td>{{ talk.get_title }}</td>
+            <td>{{ talk.get_name }}</td>
         </tr>
         {% endfor %}
       </tbody>

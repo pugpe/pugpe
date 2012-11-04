@@ -94,13 +94,27 @@ class EventTalk(TimeStampedModel):
     status = models.BooleanField(_(u'Ativo'))
 
     event = models.ForeignKey('events.Event', verbose_name=_(u'Evento'))
-    talk = models.ForeignKey('submission.Talk', verbose_name=_(u'Palestra'))
+    talk = models.ForeignKey(
+        'submission.Talk', verbose_name=_(u'Palestra'), null=True, blank=True,
+    )
 
     start = models.TimeField(_(u'Início'), null=True, blank=True)
     end = models.TimeField(_(u'Fim'), null=True, blank=True)
+
+    title = models.CharField(
+        _(u'Título'), max_length=80, null=True, blank=True,
+        help_text=_(u'Preencher para quando não há uma palestra relacionada '
+        u'ou para sobrescrever título de palestra'),
+    )
 
     objects = models.Manager()
     active = ActiveManager()
 
     def __unicode__(self):
         return u'{0} - {1}'.format(self.event, self.talk)
+
+    def get_title(self):
+        return self.title if self.title else self.talk.title
+
+    def get_name(self):
+        return self.talk.name if self.talk else ''
