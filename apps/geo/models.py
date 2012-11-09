@@ -18,7 +18,7 @@ class Location(TimeStampedModel):
     country = models.CharField(_(u'País'), max_length='50')
 
     reference = models.CharField(
-        _(u'Referência'), max_length=100,
+        _(u'Referência'), max_length=255,
         help_text=_(u'Ponto de referência, ex: Ao lado do supermercado X'),
     )
 
