@@ -67,9 +67,11 @@ def generate(name, event):
 
     text = (u'Certificamos que <b>{name}</b> participou do '
             u'Encontro do {event}, '
-            u'realizado em {local} com carga horária de 4 horas, '
+            u'realizado em {local} com carga horária de {len} horas, '
             u'na qualidade de <b>participante</b>.')
-    text = text.format(name=name, event=event, local=event.location)
+    text = text.format(
+        name=name, event=event, local=event.location, len=event.length,
+    )
 
     cert.append(
         Paragraph(u'<font size=16.0>{0}</font>'.format(text), styles['Body2']),

@@ -1,5 +1,7 @@
 # -*- coding:utf-8 -*-
+from datetime import datetime
 from django.db import models
+from django.db.models import Min, Max
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 
@@ -84,6 +86,16 @@ class Event(TimeStampedModel):
 
     def get_absolute_url(self):
         return reverse('events:event', kwargs={'event_slug': self.slug})
+
+    @property
+    def length(self):
+        ds = self.eventtalk_set.aggregate(start=Min('start'), end=Max('end'))
+        end = datetime.combine(self.date, ds['end'])
+        start = datetime.combine(self.date, ds['start'])
+
+        diff = end - start
+
+        return int(round(diff.total_seconds() / 60 / 60))
 
 
 class EventTalk(TimeStampedModel):
