@@ -17,7 +17,10 @@ class Location(TimeStampedModel):
     state = models.CharField(_(u'Estado'), max_length='50')
     country = models.CharField(_(u'País'), max_length='50')
 
-    reference = models.CharField(_(u'Referência'), max_length=100)
+    reference = models.CharField(
+        _(u'Referência'), max_length=100,
+        help_text=_(u'Ponto de referência, ex: Ao lado do supermercado X'),
+    )
 
     map = models.URLField(
         _(u'Mapa'), max_length=255, null=True, blank=True,
