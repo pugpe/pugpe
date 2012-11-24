@@ -47,7 +47,7 @@ class Event(TimeStampedModel):
     full_description = models.TextField(_(u'Descrição Completa'))
     date = models.DateTimeField(_(u'Data'))
     slug = models.SlugField()
-    location = models.ForeignKey('geo.Location', verbose_name=_(u'Local'))
+    location = models.ForeignKey('geo.Location', verbose_name=_(u'Local'), null=True, blank=True)
     partners = models.ManyToManyField(
         'events.Partner', verbose_name=_(u'Parceiros'),
         null=True, blank=True,
