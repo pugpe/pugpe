@@ -66,6 +66,9 @@ class Event(TimeStampedModel):
         null=True,
     )
 
+    # When used, the event page will be redirected to the specifyed link
+    external_link = models.CharField(_(u'Link Externo'), max_length=200, blank=True)
+
     class Meta:
         verbose_name = _(u'Evento')
         verbose_name_plural = _(u'Eventos')
@@ -85,7 +88,10 @@ class Event(TimeStampedModel):
         self._original_index = self.index
 
     def get_absolute_url(self):
-        return reverse('events:event', kwargs={'event_slug': self.slug})
+        if not self.external_link:
+            return reverse('events:event', kwargs={'event_slug': self.slug})
+        else:
+            return self.external_link
 
     @property
     def length(self):

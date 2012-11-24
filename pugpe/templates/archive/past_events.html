@@ -20,7 +20,7 @@
     {% for event in events %}
         <div class="panel">
         <p>
-            <a href="{% url events:event event.slug %}" target="_blank"><h4>{{ event.description }} - {{ event.date|date:"d/m/y" }}</h4></a>
+            <a href="{{ event.get_absolute_url }}" target="_blank"><h4>{{ event.description }} - {{ event.date|date:"d/m/y" }}</h4></a>
         </p>
         </div>
     {% endfor %}
