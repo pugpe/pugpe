@@ -16,6 +16,8 @@ urlpatterns = patterns('',
     url(r'^archive/', include('archive.urls', namespace='archive')),
 
     url(r'^xx/$', direct_to_template, {'template': 'events/xx.html'}),
+    url(r'^sobre/$', direct_to_template, {'template': 'about.html'}, name='about'),
+
     url(r'^', include('events.urls', namespace='events')),
     url(r'^(?P<event_slug>[\w_-]+)/submissao/',
         include('submission.urls', namespace='submission'),
