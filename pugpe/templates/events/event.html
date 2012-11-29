@@ -2,9 +2,19 @@
 
 {% block title %}{{ event }}{% endblock %}
 
+{% block extrastyle %}
+  <meta property="og:title" content="PUG-PE" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="{{ STATIC_URL }}img/img-logo.png" />
+  <meta property="og:site_name" content="PUG-PE" />
+  <meta property="fb:app_id" content="{{ FACEBOOK_APP_ID }}" />
+  <meta property="og:url" content="http://pycon.pug.pe{% url events:event event.slug %}" />
+  <meta property="og:description" content="{{ event.description }}" />
+{% endblock %}
+
 {% block event_content %}
   <!-- Social Buttons start -->
-  <div class="fb-like" data-href="http://pycon.pug.pe/{{ event.slug }}/" style="float: left; padding-right: 12px;" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+  <fb:like href="http://pycon.pug.pe/{{ event.slug }}/" style="float: left; padding-right: 12px;" width="450" height="80" data-layout="button_count" data-show-faces="true" />
   <script src="http://platform.twitter.com/widgets.js"></script>
   <a href="http://twitter.com/share" class="twitter-share-button" data-text="{{ event.description }} http://pycon.pug.pe/{{ event.slug }}/" data-count="horizontal" data-lang="pt">Tweetar</a>
   <!-- Social Buttons end -->
