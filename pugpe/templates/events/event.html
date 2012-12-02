@@ -14,7 +14,7 @@
 
 {% block event_content %}
   <!-- Social Buttons start -->
-  <fb:like href="http://pycon.pug.pe/{{ event.slug }}/" style="float: left; padding-right: 12px;" width="450" height="80" data-layout="button_count" data-show-faces="true" />
+  <div class="fb-like" href="http://pycon.pug.pe{% url events:event event.slug %}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
   <script src="http://platform.twitter.com/widgets.js"></script>
   <a href="http://twitter.com/share" class="twitter-share-button" data-text="{{ event.description }} http://pycon.pug.pe/{{ event.slug }}/" data-count="horizontal" data-lang="pt">Tweetar</a>
   <!-- Social Buttons end -->
