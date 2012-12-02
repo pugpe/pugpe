@@ -1,7 +1,5 @@
 # -*- coding:utf-8 -*-
-from datetime import datetime
 from django.db import models
-from django.db.models import Min, Max
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 
@@ -47,7 +45,9 @@ class Event(TimeStampedModel):
     full_description = models.TextField(_(u'Descrição Completa'))
     date = models.DateTimeField(_(u'Data'))
     slug = models.SlugField()
-    location = models.ForeignKey('geo.Location', verbose_name=_(u'Local'), null=True, blank=True)
+    location = models.ForeignKey(
+        'geo.Location', verbose_name=_(u'Local'), null=True, blank=True,
+    )
     partners = models.ManyToManyField(
         'events.Partner', verbose_name=_(u'Parceiros'),
         null=True, blank=True,
@@ -71,7 +71,9 @@ class Event(TimeStampedModel):
     )
 
     # When used, the event page will be redirected to the specifyed link
-    external_link = models.CharField(_(u'Link Externo'), max_length=200, blank=True)
+    external_link = models.CharField(
+        _(u'Link Externo'), max_length=200, blank=True,
+    )
 
     class Meta:
         verbose_name = _(u'Evento')
@@ -116,7 +118,7 @@ class EventTalk(TimeStampedModel):
     title = models.CharField(
         _(u'Título'), max_length=80, null=True, blank=True,
         help_text=_(u'Preencher para quando não há uma palestra relacionada '
-        u'ou para sobrescrever título de palestra'),
+                    u'ou para sobrescrever título de palestra'),
     )
 
     objects = models.Manager()

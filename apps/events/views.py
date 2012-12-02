@@ -29,10 +29,10 @@ class EventMixin(object):
         if self.event.submission_deadline > now:
             allow_submission = True
 
-        kwargs.update(
-            {'event': self.event, 'sponsors': self.sponsors, 'supporters': self.supporters,
-            'allow_submission': allow_submission, },
-        )
+        kwargs.update({
+            'event': self.event, 'sponsors': self.sponsors,
+            'supporters': self.supporters, 'allow_submission': allow_submission
+        })
 
         return super(EventMixin, self).get_context_data(**kwargs)
 
