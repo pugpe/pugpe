@@ -88,7 +88,8 @@ class Event(TimeStampedModel):
 
     def save(self, *args, **kwargs):
         # Caso marcado index, desmarcar outros.
-        Event.objects.update(index=False)
+        if self.index and self.index != self._original_index:
+            Event.objects.exclude(pk=self.pk).update(index=False)
 
         super(Event, self).save(*args, **kwargs)
         self._original_index = self.index
