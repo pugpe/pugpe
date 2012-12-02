@@ -6,15 +6,6 @@
   <meta name="keywords" content="" />
   <meta name="description" content="" />
 
-  <meta property="og:title" content="PUG-PE" />
-  <meta property="og:image" content="{{ STATIC_URL }}img/img-logo.png" />
-  <meta property="og:site_name" content="PUG-PE" />
-  <meta property="fb:app_id" content="{{ FACEBOOK_APP_ID }}" />
-  {% if event %}
-  <meta property="og:site_name" content="http://pycon.pug.pe{% url events:event event.slug %}" />
-  {% endif %}
-
-
   <title>{% block title %}{% endblock %} | PUG-PE</title>
   <link href="http://fonts.googleapis.com/css?family=Signika:400,300,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" />
@@ -42,13 +33,15 @@
 <body>
   <!-- facebook js start -->
   <div id="fb-root"></div>
-  <script>(function(d, s, id) {
+  <script>
+  (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
     js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId={{ FACEBOOK_APP_ID }}";
     fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script>
+  }(document, 'script', 'facebook-jssdk'));
+  </script>
   <!-- facebook js end -->
   <div class="quickbar">
     <div class="wrapper">
