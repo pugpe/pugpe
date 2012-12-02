@@ -73,6 +73,10 @@ class Event(TimeStampedModel):
     # When used, the event page will be redirected to the specifyed link
     external_link = models.CharField(
         _(u'Link Externo'), max_length=200, blank=True,
+        help_text=_(
+            u'Quando utilizado, o evento será redirecionado para a'
+            u' url. <br />Utilizado para manter a seção Arquivo atualizada, '
+            u'mesmo para eventos hospedados em hosts externos')
     )
 
     class Meta:
