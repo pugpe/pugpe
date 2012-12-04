@@ -2,8 +2,6 @@
 from django.views.generic import CreateView, ListView
 from django.views.generic.base import TemplateView
 from django.core.urlresolvers import reverse
-from django.contrib import messages
-from django.utils.translation import ugettext_lazy as _
 from django.utils.decorators import method_decorator
 from django.utils import timezone
 from django.shortcuts import redirect
@@ -62,6 +60,7 @@ class SubmissionListView(EventMixin, ListView):
 
     def get_queryset(self):
         ets = EventTalk.objects.filter(talk__isnull=False)
+        ets = ets.exclude(talk__type='light')
         ets = ets.filter(event=self.event)
         pks = list(ets.values_list('event__pk', flat=1))
 
