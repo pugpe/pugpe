@@ -8,7 +8,7 @@ from django.utils.decorators import method_decorator
 from django.utils import timezone
 from django.shortcuts import redirect
 
-from events.models import Event
+from events.models import Event, EventTalk
 from events.views import EventMixin
 
 from .models import Talk
@@ -61,9 +61,11 @@ class SubmissionListView(EventMixin, ListView):
         return super(SubmissionListView, self).dispatch(*args, **kwargs)
 
     def get_queryset(self):
-        qs = Talk.objects.filter(type__in=['talk', 'tutorial'])
-        qs = qs.filter(event=self.event)
-        return qs
+        ets = EventTalk.objects.filter(talk__isnull=False)
+        ets = ets.filter(event=self.event)
+        pks = list(ets.values_list('event__pk', flat=1))
+
+        return Event.objects.filter(pk__in=pks)
 
     def post(self, request, *args, **kwargs):
         form = VoteForm(request.POST)
