@@ -61,7 +61,9 @@ class SubmissionListView(EventMixin, ListView):
         return super(SubmissionListView, self).dispatch(*args, **kwargs)
 
     def get_queryset(self):
-        return Talk.objects.filter(type__in=['talk', 'tutorial'])
+        qs = Talk.objects.filter(type__in=['talk', 'tutorial'])
+        qs = qs.filter(event=self.event)
+        return qs
 
     def post(self, request, *args, **kwargs):
         form = VoteForm(request.POST)
