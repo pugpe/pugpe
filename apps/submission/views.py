@@ -62,9 +62,9 @@ class SubmissionListView(EventMixin, ListView):
         ets = EventTalk.objects.filter(talk__isnull=False)
         ets = ets.exclude(talk__type='light')
         ets = ets.filter(event=self.event)
-        pks = list(ets.values_list('event__pk', flat=1))
+        pks = list(ets.values_list('talk__pk', flat=1))
 
-        return Event.objects.filter(pk__in=pks)
+        return Talk.objects.filter(pk__in=pks)
 
     def post(self, request, *args, **kwargs):
         form = VoteForm(request.POST)
