@@ -52,5 +52,6 @@ class TalkListView(EventMixin, ListView):
 
     def get_queryset(self):
         qs = EventTalk.active.filter(event__slug=self.kwargs['event_slug'])
+        qs = qs.select_related('talk')
 
-        return qs.order_by('start')
+        return qs.order_by('-talk__type', 'start')

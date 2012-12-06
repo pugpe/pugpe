@@ -1,4 +1,5 @@
 {% extends "base_event.html" %}
+{% load talk_type %}
 
 {% block title %}{{ event }}{% endblock %}
 
@@ -33,22 +34,29 @@
   <h5>Horário: {{ event.date }} </h5> 
   <h5>Entrada: Gratuita</h5>
 
-  <h2 class="title" id="talks">PALESTRAS</h2>
-  {% for talk in talks %}
-      {% if talk.talk %}
-          <div class="panel">
-            <h4 class="red">{{ talk.talk.title }}</h4>
-            <div class="left">
-                <img src="{{ talk.talk.gravatar }}" class="left" />
-                <br />
-                <h6 class="left">{{ talk.talk.name }}</h6>
-            </div>
-            <p>{{ talk.talk.summary }}</p>
-          </div>
+  {% regroup talks by talk.type as talk_types %}
+
+  {% for types in talk_types %}
+      {% if types.grouper %}
+          <h2 class="title" id="talks">{{ types.grouper|verbose_talk_type }}</h2>
       {% endif %}
+      {% for talk in types.list %}
+          {% if talk.talk %}
+              <div class="panel">
+                <h4 class="red">{{ talk.talk.title }}</h4>
+                <div class="left">
+                    <img src="{{ talk.talk.gravatar }}" class="left" />
+                    <br />
+                    <h6 class="left">{{ talk.talk.name }}</h6>
+                </div>
+                <p>{{ talk.talk.summary }}</p>
+              </div>
+          {% endif %}
+      {% endfor %}
   {% empty %}
       <p>Divulgaremos as palestras em breve!</p>
   {% endfor %}
+
   <h2 class="title" id="agenda">Programação</h2>
   <table>
       <thead>

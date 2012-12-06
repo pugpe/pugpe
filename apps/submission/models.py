@@ -23,9 +23,9 @@ class Vote(TimeStampedModel):
 
 class Talk(TimeStampedModel):
     TYPES = (
-        ('talk', _(u'Palestra')),
-        ('tutorial', _(u'Tutorial')),
-        ('light', _(u'Palestra Relâmpago')),
+        ('talk', _(u'Palestras')),
+        ('tutorial', _(u'Tutoriais')),
+        ('light', _(u'Palestras Relâmpago')),
     )
 
     LEVELS = (
