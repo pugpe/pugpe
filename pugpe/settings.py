@@ -57,12 +57,52 @@ USE_L10N = True
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
 
+""" Social Auth """
+
+AUTHENTICATION_BACKENDS = (
+    # 'social_auth.backends.twitter.TwitterBackend',
+    'social_auth.backends.facebook.FacebookBackend',
+    # 'social_auth.backends.google.GoogleOAuthBackend',
+    # 'social_auth.backends.google.GoogleOAuth2Backend',
+    # 'social_auth.backends.google.GoogleBackend',
+    # 'social_auth.backends.yahoo.YahooBackend',
+    # 'social_auth.backends.browserid.BrowserIDBackend',
+    # 'social_auth.backends.contrib.linkedin.LinkedinBackend',
+    # 'social_auth.backends.contrib.disqus.DisqusBackend',
+    # 'social_auth.backends.contrib.livejournal.LiveJournalBackend',
+    # 'social_auth.backends.contrib.orkut.OrkutBackend',
+    # 'social_auth.backends.contrib.foursquare.FoursquareBackend',
+    # 'social_auth.backends.contrib.github.GithubBackend',
+    # 'social_auth.backends.contrib.vkontakte.VKontakteBackend',
+    # 'social_auth.backends.contrib.live.LiveBackend',
+    # 'social_auth.backends.contrib.skyrock.SkyrockBackend',
+    # 'social_auth.backends.contrib.yahoo.YahooOAuthBackend',
+    # 'social_auth.backends.OpenIDBackend',
+    # 'django.contrib.auth.backends.ModelBackend',
+)
+
+FACEBOOK_APP_ID = '220369961426964'
+FACEBOOK_API_SECRET = os.environ.get('FACEBOOK_APP_SECRET')
+FACEBOOK_EXTENDED_PERMISSIONS = ['email']
+# FACEBOOK_APP_SECRET is beeing used in other parts of the code
+# will keep it for compatibility
+# TODO: Replace references of FACEBOOK_APP_SECRET
+#       for FACEBOOK_API_SECRET
+FACEBOOK_APP_SECRET = FACEBOOK_API_SECRET
+
+SOCIAL_AUTH_DEFAULT_USERNAME = 'pup-pe_member'
+
+
+LOGIN_URL = '/'
+LOGIN_REDIRECT_URL = '/logged-in/'
+LOGIN_ERROR_URL = '/login-error/'
+
+
+""" AWS """
+
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
-
-FACEBOOK_APP_ID = '220369961426964'
-FACEBOOK_APP_SECRET = os.environ.get('FACEBOOK_APP_SECRET')
 
 MEDIA_ROOT = join(PROJECT_ROOT, 'media')
 STATIC_ROOT = join(PROJECT_ROOT, 'static')
@@ -172,6 +212,7 @@ INSTALLED_APPS = (
     'easy_thumbnails',
     'storages',
     'bootstrapform',
+    'social_auth',
 
     'geo',
     'emails',
