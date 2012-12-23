@@ -15,12 +15,30 @@
 {% endblock %}
 
 {% block event_content %}
-  <!-- Social Buttons start -->
-  <div class="fb-like" href="http://pycon.pug.pe{% url events:event event.slug %}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
-  <script src="http://platform.twitter.com/widgets.js"></script>
-  <a href="http://twitter.com/share" class="twitter-share-button" data-text="{{ event.description }} http://pycon.pug.pe/{{ event.slug }}/" data-count="horizontal" data-lang="pt">Tweetar</a>
-  <!-- Social Buttons end -->
-  <h2 class="title" id="home">{{ event.description }} ({{ event.date|date:"d/m" }})</h2>
+  {% if date_now < event.date %}
+    <div class="panel">
+      {% if not user.is_authenticated %}
+        <h2 class="red">Faça login para se inscrever:</h2>
+          <ul>
+            <li>
+                <a href="{% url socialauth_begin 'facebook' %}">
+                    Facebook
+                </a>
+            </li>
+        {% else %}
+          <h2 class="button">Inscrever-se</h2>
+        {% endif %}
+      </div>
+    
+  {% endif %}
+
+  <h2 class="title" id="home">{{ event.description }} ({{ event.date|date:"d/m" }})
+    <!-- Social Buttons start -->
+    <div class="fb-like" href="http://pycon.pug.pe{% url events:event event.slug %}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+    <script src="http://platform.twitter.com/widgets.js"></script>
+    <a href="http://twitter.com/share" class="twitter-share-button" data-text="{{ event.description }} http://pycon.pug.pe/{{ event.slug }}/" data-count="horizontal" data-lang="pt">Tweetar</a>
+    <!-- Social Buttons end -->
+  </h2>
   <p>{{ event.full_description|safe }}</p>
 
   <h2 class="title" id="local">Como Chegar?</h2>

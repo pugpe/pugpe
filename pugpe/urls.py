@@ -10,7 +10,8 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^$', 'core.views.index', name='index'),
 
-    url(r'social_auth/', include('social_auth.urls')),
+    url(r'', include('social_auth.urls')),
+    url('^accounts/', include('django.contrib.auth.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^emails/', include('emails.urls', namespace='emails')),

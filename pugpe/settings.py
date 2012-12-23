@@ -78,7 +78,7 @@ AUTHENTICATION_BACKENDS = (
     # 'social_auth.backends.contrib.skyrock.SkyrockBackend',
     # 'social_auth.backends.contrib.yahoo.YahooOAuthBackend',
     # 'social_auth.backends.OpenIDBackend',
-    # 'django.contrib.auth.backends.ModelBackend',
+    'django.contrib.auth.backends.ModelBackend',
 )
 
 FACEBOOK_APP_ID = '220369961426964'
@@ -92,11 +92,7 @@ FACEBOOK_APP_SECRET = FACEBOOK_API_SECRET
 
 SOCIAL_AUTH_DEFAULT_USERNAME = 'pup-pe_member'
 
-
-LOGIN_URL = '/'
-LOGIN_REDIRECT_URL = '/logged-in/'
-LOGIN_ERROR_URL = '/login-error/'
-
+LOGIN_REDIRECT_URL = '/'
 
 """ AWS """
 
@@ -172,7 +168,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.static",
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
-    "pugpe.fbutils.app_id",
+    "pugpe.contextutils.facebook",
+    "pugpe.contextutils.now",
 )
 
 MIDDLEWARE_CLASSES = (

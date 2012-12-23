@@ -2,11 +2,10 @@
 from django.views.generic import ListView
 from django.shortcuts import get_object_or_404, redirect
 
-import datetime
-from django.utils.timezone import utc
-
 from .models import Event, EventTalk
 from .models import Support, Sponsor
+
+from core.views import SimpleTemplateView
 
 
 class EventMixin(object):
@@ -23,15 +22,10 @@ class EventMixin(object):
         return super(EventMixin, self).dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
-        now = datetime.datetime.utcnow().replace(tzinfo=utc)
-
-        allow_submission = False
-        if self.event.submission_deadline > now:
-            allow_submission = True
-
         kwargs.update({
-            'event': self.event, 'sponsors': self.sponsors,
-            'supporters': self.supporters, 'allow_submission': allow_submission
+            'event': self.event,
+            'sponsors': self.sponsors,
+            'supporters': self.supporters,
         })
 
         return super(EventMixin, self).get_context_data(**kwargs)
@@ -55,3 +49,7 @@ class TalkListView(EventMixin, ListView):
         qs = qs.select_related('talk', 'event')
 
         return qs.order_by('start', 'talk__type')
+
+
+class JoinEvent(EventMixin, SimpleTemplateView):
+    pass
