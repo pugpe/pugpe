@@ -40,6 +40,14 @@ class Support(Partner):
         verbose_name_plural = _(u'Apoio')
 
 
+class EventParticipants(TimeStampedModel):
+    user = models.ForeignKey('auth.User')
+    event = models.ForeignKey('events.Event')
+
+    def __unicode__(self):
+        return u'{0} - {1}'.format(self.event.slug, self.user.get_full_name())
+
+
 class Event(TimeStampedModel):
     description = models.CharField(_(u'Descrição'), max_length=100)
     full_description = models.TextField(_(u'Descrição Completa'))
@@ -69,6 +77,8 @@ class Event(TimeStampedModel):
     length = models.PositiveIntegerField(
         _(u'Duração do evento'), help_text=_(u'Utilizada em certificado'),
     )
+
+    participants = models.ManyToManyField('auth.User', through='events.EventParticipants')
 
     # When used, the event page will be redirected to the specifyed link
     external_link = models.CharField(

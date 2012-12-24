@@ -26,10 +26,13 @@
                 </a>
             </li>
         {% else %}
-          <h2 class="button">Inscrever-se</h2>
+          {% if event in user.event_set.all %}
+            <h2>Você está inscrito!</h2>
+          {% else %}
+            <a href="{% url events:participate event.slug %}"><h2 class="button">Inscrever-se</h2></a>
+          {% endif %}
         {% endif %}
       </div>
-    
   {% endif %}
 
   <h2 class="title" id="home">{{ event.description }} ({{ event.date|date:"d/m" }})
