@@ -1,20 +1,24 @@
 {% extends "base_event.html" %}
-{% load i18n %}
-{% load bootstrap %}
+{% load i18n bootstrap %}
 
-{% block title %}{%trans 'Submeta sua proposta para a' %} {{ event }}!{% endblock %}
+{% block title %}{% blocktrans %}Submeta sua proposta para o {{ event }}!{% endblocktrans %}{% endblock %}
 
 {% block event_content %}
+    {% blocktrans %}
     <h2>Submeta sua proposta para a {{ event }}!</h2>
     <p>Este formulário visa a convidar a todos a submeterem palestras para o nosso {{ event }}.  O evento será realizado {{ event.date }} na {{ event.location }}.  Qualquer um pode submeter quantas quiser.<br>
     As palestras relâmpagos terão duração no máximo de 10 minutos.<br>
     Submetam!<br>
     Atenciosamente,<br>
     Equipe PUG-PE</p>
-    <h3>Ficha de Inscrição</h3>
+    {% endblocktrans %}
+    <h3>{% trans "Ficha de Inscrição" %}</h3>
     <form method="POST" action="." class="sign-in">
-        {% csrf_token %} 
+        {% csrf_token %}
         {{ form|bootstrap }}
-        <input class="btn-send" type="submit" value="Enviar">
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">{% trans "Enviar" %}</button>
+            <button type="reset" class="btn">{% trans "Limpar" %}</button>
+        </div>
     </form>
 {% endblock %}

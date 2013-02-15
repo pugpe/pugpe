@@ -129,6 +129,10 @@ class EventTalk(TimeStampedModel):
     objects = models.Manager()
     active = ActiveManager()
 
+    class Meta:
+        verbose_name = _(u'Palestra do Evento')
+        verbose_name_plural = _(u'Palestras dos Eventos')
+
     def __unicode__(self):
         return u'{0} - {1}'.format(self.event, self.talk)
 

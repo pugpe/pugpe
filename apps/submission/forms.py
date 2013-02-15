@@ -13,6 +13,11 @@ class TalkForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         self.event = kwargs.pop('event')
         super(TalkForm, self).__init__(*args, **kwargs)
+        for key, field in self.fields.items():
+            if isinstance(field.widget, forms.Textarea):
+                field.widget.attrs['class'] = 'input-xxlarge'
+            else:
+                field.widget.attrs['class'] = 'input-xlarge'
 
     def save(self, *args, **kwargs):
         # Criar EventTalk, para já constar no admin e facilmente ser ativado
