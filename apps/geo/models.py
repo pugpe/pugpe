@@ -48,14 +48,14 @@ class Location(TimeStampedModel):
     @property
     def map_link(self):
         '''Google map search link'''
-        base_url = 'http://maps.google.com.br/maps?{0}'
+        base_url = u'http://maps.google.com.br/maps?{0}'
 
         qs = u'{0},{1},{2},{3},{4}'
         qs = qs.format(
             self.street, self.number, self.district, self.city, self.state,
         )
 
-        qs = urllib.urlencode({'q': qs})
+        qs = urllib.urlencode({'q': qs.encode('utf-8')})
 
         return base_url.format(qs)
 
