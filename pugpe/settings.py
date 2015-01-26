@@ -125,6 +125,7 @@ TEMPLATE_LOADERS = (
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.request',
     "django.contrib.auth.context_processors.auth",
     "django.core.context_processors.debug",
     "django.core.context_processors.i18n",
@@ -160,6 +161,7 @@ TEMPLATE_DIRS = (
 
 
 INSTALLED_APPS = (
+    'suit',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -172,6 +174,7 @@ INSTALLED_APPS = (
     'easy_thumbnails',
     'storages',
     'bootstrapform',
+    'suit_ckeditor',
 
     'geo',
     'emails',
