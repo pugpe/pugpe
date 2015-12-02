@@ -67,10 +67,12 @@ def generate(name, event):
 
     text = (u'Certificamos que <b>{name}</b> participou do '
             u'Encontro do {event}, '
+            u'no dia {date}, '
             u'realizado em {local} com carga horária de {len} horas, '
             u'na qualidade de <b>participante</b>.')
     text = text.format(
         name=name, event=event, local=event.location, len=event.length,
+        date=event.date.strftime('%d/%m/%Y'),
     )
 
     cert.append(
