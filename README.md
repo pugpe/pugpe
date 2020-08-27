@@ -9,11 +9,27 @@ Softwate utilizados
 
 - Python
 - Django
+- Docker
 
-Instalação
-----------
+Instalação (usando sqlite)
+--------------------------
 
-- make setup
+- sudo docker-compose run --rm app python manage.py syncdb 
+- sudo docker-compose run --rm app python manage.py migrate
+
+
+Rodando
+-------
+
+- sudo docker-compose run --service-ports --rm app python manage.py runserver 0.0.0.0:8000
+- Acesse o site em http://localhost:8000
+
+
+Testes
+------
+
+- sudo docker-compose run --service-ports --rm app python manage.py test
+
 
 Contribuidores
 --------------
