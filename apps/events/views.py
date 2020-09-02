@@ -16,7 +16,9 @@ class EventMixin(object):
     supporters = None
 
     def dispatch(self, request, *args, **kwargs):
-        self.event = get_object_or_404(Event, slug=kwargs['event_slug'])
+        self.event = get_object_or_404(
+            Event.objects.select_related('location'), slug=kwargs['event_slug'],
+        )
         self.sponsors = Sponsor.objects.filter(event=self.event)
         self.supporters = Support.objects.filter(event=self.event)
 
@@ -31,7 +33,9 @@ class EventMixin(object):
 
         kwargs.update({
             'event': self.event, 'sponsors': self.sponsors,
-            'supporters': self.supporters, 'allow_submission': allow_submission
+            'supporters': self.supporters, 'allow_submission': allow_submission,
+            'event_date': self.event.date, 'location_name': self.event.location.description,
+            'location_map_link': self.event.location.map_link,
         })
 
         return super(EventMixin, self).get_context_data(**kwargs)
