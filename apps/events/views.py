@@ -34,7 +34,12 @@ class EventMixin(object):
         kwargs.update({
             'event': self.event, 'sponsors': self.sponsors,
             'supporters': self.supporters, 'allow_submission': allow_submission,
-            'event_date': self.event.date, 'location_name': self.event.location.description,
+            'event_date': self.event.date,
+        })
+
+        if self.event.location is not None:
+            kwargs.update({
+            'location_name': self.event.location.description,
             'location_map_link': self.event.location.map_link,
         })
 

@@ -4,14 +4,12 @@
 {% block title %}{% blocktrans %}Submeta sua proposta para o {{ event }}!{% endblocktrans %}{% endblock %}
 
 {% block event_content %}
-    {% blocktrans %}
     <h2>Submeta sua proposta para a {{ event }}!</h2>
-    <p>Este formulário visa a convidar a todos a submeterem palestras para o nosso {{ event }}.  O evento será realizado em {{ event_date }} na <a href="{{ location_map_link }}">{{ location_name }}</a>.  Qualquer um pode submeter quantas quiser.<br>
+    <p>Este formulário visa a convidar a todos a submeterem palestras para o nosso {{ event }}.  O evento será realizado em {{ event_date }}{% if location_name %} na <a href="{{ location_map_link }}">{{ location_name }}</a>{% endif %}.  Qualquer um pode submeter quantas quiser.<br>
     As palestras relâmpagos terão duração no máximo de 10 minutos.<br>
     Submetam!<br>
     Atenciosamente,<br>
     Equipe PUG-PE</p>
-    {% endblocktrans %}
     <h3>{% trans "Ficha de Inscrição" %}</h3>
     <form method="POST" action="." class="sign-in">
         {% csrf_token %}
