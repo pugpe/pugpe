@@ -30,6 +30,13 @@ Testes
 
 - sudo docker-compose run --service-ports --rm app python manage.py test
 
+Deploy
+------
+
+```bash
+$ heroku git:remote --app pugpe
+$ git push heroku master
+```
 
 Contribuidores
 --------------
