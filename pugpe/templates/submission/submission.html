@@ -5,9 +5,7 @@
 
 {% block event_content %}
     <h2>Submeta sua proposta para a {{ event }}!</h2>
-    {% blocktrans %}
-    <p>Este formulário visa a convidar a todos a submeterem palestras para o nosso {{ event }}.  O evento será realizado em {{ event_date }}
-    {% endblocktrans %}
+    <p>Este formulário visa a convidar a todos a submeterem palestras para o nosso {{ event }}.  O evento será realizado em {{ event_date|date:"d/m/Y" }}
 
     {% if location_name %} na <a href="{{ location_map_link }}">{{ location_name }}</a>{% endif %}.  Qualquer um pode submeter quantas quiser.<br>
     As palestras relâmpagos terão duração no máximo de 10 minutos.<br>
