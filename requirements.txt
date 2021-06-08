@@ -3,7 +3,7 @@ South==0.7.4
 dj-database-url==0.2.1
 psycopg2==2.7.5
 gunicorn==0.16.1
-Pillow==3.0.0
+Pillow==8.2.0
 easy-thumbnails==1.1
 boto==2.6.0
 django-storages==1.1.5
