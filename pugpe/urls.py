@@ -22,4 +22,5 @@ urlpatterns = patterns('',
     url(r'^(?P<event_slug>[\w_-]+)/submissao/',
         include('submission.urls', namespace='submission'),
     ),
+    url(r'_health/$', 'core.views.health', name='health'),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
